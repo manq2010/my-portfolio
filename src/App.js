@@ -4,6 +4,7 @@ import './App.css';
 import Footer from './features/Footer/Footer';
 import Header from './features/Header/Header';
 import About from './features/About/About';
+import Projects from './features/Projects/Projects';
 
 const App = () => {
   const [{ themeName }] = useContext(ThemeContext);
@@ -12,6 +13,7 @@ const App = () => {
       <Header />
       <main>
         <About />
+        <Projects />
       </main>
       <Footer />
     </div>

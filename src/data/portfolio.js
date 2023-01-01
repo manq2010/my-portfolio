@@ -28,6 +28,7 @@ const projects = [
     stack: ['SASS', 'TypeScript', 'React'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
+    image: 'Project 1',
   },
   {
     name: 'Project 2',
@@ -36,6 +37,7 @@ const projects = [
     stack: ['SASS', 'TypeScript', 'React'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
+    image: 'Project 2',
   },
   {
     name: 'Project 3',
@@ -44,6 +46,7 @@ const projects = [
     stack: ['SASS', 'TypeScript', 'React'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
+    image: 'Project 3',
   },
 ];
 
