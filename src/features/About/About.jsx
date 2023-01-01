@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { about } from '../../data/portfolio';
 
-const AboutWrapper = styled.div`
+const AboutWrapper = styled.section`
 
 `;
 

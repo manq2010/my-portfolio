@@ -5,6 +5,7 @@ import Footer from './features/Footer/Footer';
 import Header from './features/Header/Header';
 import About from './features/About/About';
 import Projects from './features/Projects/Projects';
+import Skills from './features/Skills/Skills';
 
 const App = () => {
   const [{ themeName }] = useContext(ThemeContext);
@@ -14,6 +15,7 @@ const App = () => {
       <main>
         <About />
         <Projects />
+        <Skills />
       </main>
       <Footer />
     </div>

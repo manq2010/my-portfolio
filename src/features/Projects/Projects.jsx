@@ -5,12 +5,12 @@ import { projects } from '../../data/portfolio';
 import ProjectItem from './ProjectItem';
 
 const ProjectSectionWrapper = styled.section`
-    margin-top: 5em;
+    margin-top: 5tem;
 `;
 
 const SectionTitle = styled.h2`
     text-align: center;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     ;text-transform: uppercase;
 `;
 
@@ -18,8 +18,8 @@ const ProjectGrid = styled.div`
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
-    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-gap: 2rem;
 `;
 
 const Projects = () => {
