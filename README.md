@@ -1,34 +1,5 @@
 <a name="readme-top"></a>
 
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-After you're finished please remove all the comments and instructions!
--->
-
-<div align="center">
-
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
-
-</div>
-
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
@@ -55,7 +26,7 @@ After you're finished please remove all the comments and instructions!
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Project <a name="about-project"></a>
+# 📖 My Portfolio <a name="about-project"></a>
 
 > "Project"
 
@@ -112,7 +83,7 @@ In order to run this project you need:
 ### Setup
 
 Clone this repository by using the command line : 
-- `git clone https://github.com/manq2010/<repo>`
+- `git clone https://github.com/manq2010/my-portfolio.git`
 
 ### Install
 
@@ -194,7 +165,7 @@ Give a ⭐️ if you like this project!
 
 - **How to use the project**
 
-  - ```git clone https://github.com/manq2010/math-magicians```
+  - ```git clone https://github.com/manq2010/my-portfolio.git```
 
 - **How to contribute to the project**
 
