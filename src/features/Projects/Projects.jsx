@@ -31,7 +31,7 @@ const Projects = () => {
       { projects.length ? (
         <ProjectSectionWrapper id="projects">
           <SectionTitle>Projects</SectionTitle>
-          <ProjectGrid className="projects__grid">
+          <ProjectGrid>
             {projects.map((project) => (
               <ProjectItem key={id} project={project} />
             ))}

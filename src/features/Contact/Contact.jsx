@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import EmailIcon from '@mui/icons-material/Email';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import GitHubIcon from '@mui/icons-material/GitHub';
+// import EmailIcon from '@mui/icons-material/Email';
+// import TwitterIcon from '@mui/icons-material/Twitter';
+// import GitHubIcon from '@mui/icons-material/GitHub';
 import { contact } from '../../data/portfolio';
 
 const ContactWrapper = styled.section`
@@ -15,19 +15,19 @@ const Contact = () => (
   <>
     { contact && (
       <ContactWrapper>
-        <h2>Contact</h2>
-        <a href={`mailto:${contact.email}`} target="_blank" rel="noreferrer">
+        <h2>Want me to build staff for you? Hit me on LinkedIn</h2>
+        {/* <a href={`mailto:${contact.email}`} target="_blank" rel="noreferrer">
           <span type="button">
             <EmailIcon />
           </span>
-        </a>
+        </a> */}
 
         <a href={contact.linkedin} target="_blank" rel="noreferrer">
           <span type="button">
             <LinkedInIcon />
           </span>
         </a>
-
+        {/*
         <a href={contact.twitter} target="_blank" rel="noreferrer">
           <span type="button">
             <TwitterIcon />
@@ -38,7 +38,7 @@ const Contact = () => (
           <span type="button">
             <GitHubIcon />
           </span>
-        </a>
+        </a> */}
       </ContactWrapper>
     )}
   </>

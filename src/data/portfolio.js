@@ -73,6 +73,62 @@ const contact = {
   twitter: 'twitter@mail.com',
 };
 
+const testimonies = [
+  // testimonies can be added or removed
+  {
+    name: 'Testimony 1',
+    testimonial:
+        'F2.net is a skilled company who helped us define our production management application requirements and implemented it as a beautiful system that our users love. We are very satisfied.',
+    role: 'https://github.com',
+    image: 'https://github.com',
+    company: 'Project 3',
+    logo: 'https://github.com',
+  },
+  {
+    name: 'Testimony 2',
+    testimonial:
+        'F2.net is a skilled company who helped us define our production management application requirements and implemented it as a beautiful system that our users love. We are very satisfied.',
+    role: 'https://github.com',
+    image: 'https://github.com',
+    company: 'Project 3',
+    logo: 'https://github.com',
+  },
+  {
+    name: 'Testimony 3',
+    testimonial:
+        'F2.net is a skilled company who helped us define our production management application requirements and implemented it as a beautiful system that our users love. We are very satisfied.',
+    role: 'https://github.com',
+    image: 'https://github.com',
+    company: 'Project 3',
+    logo: 'https://github.com',
+  },
+];
+
+const experiencies = [
+  // testimonies can be added or removed
+  {
+    jobDescription:
+        'F2.net is a skilled company who helped us define our production management application requirements and implemented it as a beautiful system that our users love. We are very satisfied.',
+    role: 'Software Engineer 3',
+    startDate: '2022',
+    endDate: '',
+  },
+  {
+    jobDescription:
+        'F2.net is a skilled company who helped us define our production management application requirements and implemented it as a beautiful system that our users love. We are very satisfied.',
+    role: 'Software Engineer 1',
+    startDate: '2017',
+    endDate: '2022',
+  },
+  {
+    jobDescription:
+        'F2.net is a skilled company who helped us define our production management application requirements and implemented it as a beautiful system that our users love. We are very satisfied.',
+    role: 'Software Engineer 1',
+    startDate: '2017',
+    endDate: '2018',
+  },
+];
+
 export {
-  header, about, projects, skills, contact,
+  header, about, projects, skills, contact, testimonies, experiencies,
 };
