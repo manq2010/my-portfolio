@@ -1,14 +1,18 @@
+import { useContext } from 'react';
+import { ThemeContext } from './contexts/theme';
 import './App.css';
 import Footer from './features/Footer/Footer';
-import Navbar from './features/Navbar/Navbar';
+import Header from './features/Header/Header';
 
-function App() {
+const App = () => {
+  const [{ themeName }] = useContext(ThemeContext);
   return (
-    <div>
-      <Navbar />
+    <div id="top" className={`${themeName} app`}>
+      <Header />
+
       <Footer />
     </div>
   );
-}
+};
 
 export default App;
