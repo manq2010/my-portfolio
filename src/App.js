@@ -6,6 +6,7 @@ import Header from './features/Header/Header';
 import About from './features/About/About';
 import Projects from './features/Projects/Projects';
 import Skills from './features/Skills/Skills';
+import Contact from './features/Contact/Contact';
 
 const App = () => {
   const [{ themeName }] = useContext(ThemeContext);
@@ -16,6 +17,7 @@ const App = () => {
         <About />
         <Projects />
         <Skills />
+        <Contact />
       </main>
       <Footer />
     </div>
