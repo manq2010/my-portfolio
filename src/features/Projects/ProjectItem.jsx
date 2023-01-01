@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import uniqid from 'uniqid';
+import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import LinkIcon from '@mui/icons-material/Link';
 import LaunchIcon from '@mui/icons-material/Launch';
@@ -36,18 +36,16 @@ const ProjectDescription = styled.p`
     margin-top: 1em;
 `;
 
-const ProjectItem = ({ project }) => {
-  const id = uniqid();
-  return (
-    <ProjectGridItem>
-      <div>
-        <img src={project.image} alt={project.name} />
-      </div>
-      <div>
-        <h3>{project.name}</h3>
-        <ProjectDescription>{project.description}</ProjectDescription>
+const ProjectItem = ({ project }) => (
+  <ProjectGridItem>
+    <div>
+      <img src={project.image} alt={project.name} />
+    </div>
+    <div>
+      <h3>{project.name}</h3>
+      <ProjectDescription>{project.description}</ProjectDescription>
 
-        {
+      {
         project.livePreview && (
         <a href={project.sourceCode} target="_blank" rel="noreferrer">
           {' '}
@@ -57,11 +55,11 @@ const ProjectItem = ({ project }) => {
         </a>
         )
         }
-        {
+      {
         project.stack && (
         <ProjectStack>
           {project.stack.map((item) => (
-            <ProjectStackItem key={id}>
+            <ProjectStackItem key={uuidv4()}>
               {item}
             </ProjectStackItem>
           ))}
@@ -69,7 +67,7 @@ const ProjectItem = ({ project }) => {
         )
       }
 
-        {
+      {
         project.livePreview && (
         <a href={project.livePreview} target="_blank" rel="noreferrer">
           View Demo
@@ -80,9 +78,8 @@ const ProjectItem = ({ project }) => {
         )
         }
 
-      </div>
-    </ProjectGridItem>
-  );
-};
+    </div>
+  </ProjectGridItem>
+);
 
 export default ProjectItem;

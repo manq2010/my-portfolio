@@ -1,5 +1,5 @@
 import React from 'react';
-import uniqid from 'uniqid';
+import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import { projects } from '../../data/portfolio';
 import ProjectItem from './ProjectItem';
@@ -22,24 +22,19 @@ const ProjectGrid = styled.div`
     grid-gap: 2rem;
 `;
 
-const Projects = () => {
-  const id = uniqid();
-
-  return (
-
-    <>
-      { projects.length ? (
-        <ProjectSectionWrapper id="projects">
-          <SectionTitle>Projects</SectionTitle>
-          <ProjectGrid>
-            {projects.map((project) => (
-              <ProjectItem key={id} project={project} />
-            ))}
-          </ProjectGrid>
-        </ProjectSectionWrapper>
-      ) : null}
-    </>
-  );
-};
+const Projects = () => (
+  <>
+    { projects.length ? (
+      <ProjectSectionWrapper id="projects">
+        <SectionTitle>Projects</SectionTitle>
+        <ProjectGrid>
+          {projects.map((project) => (
+            <ProjectItem key={uuidv4()} project={project} />
+          ))}
+        </ProjectGrid>
+      </ProjectSectionWrapper>
+    ) : null}
+  </>
+);
 
 export default Projects;

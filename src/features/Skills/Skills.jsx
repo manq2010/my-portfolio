@@ -1,5 +1,5 @@
 import React from 'react';
-import uniqid from 'uniqid';
+import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import { skills } from '../../data/portfolio';
 
@@ -20,25 +20,21 @@ const SkillItem = styled.li`
 margin: 0.5rem;
 `;
 
-const Skills = () => {
-  const id = uniqid();
-  return (
-    <SkillsWrapper id="skills">
-      <h2>Skills</h2>
-      <SkillList>
-        {
+const Skills = () => (
+  <SkillsWrapper id="skills">
+    <h2>Skills</h2>
+    <SkillList>
+      {
             skills && (
               skills.map((skill) => (
-                <SkillItem key={id}>
+                <SkillItem key={uuidv4()}>
                   {skill}
                 </SkillItem>
               ))
             )
         }
-      </SkillList>
-
-    </SkillsWrapper>
-  );
-};
+    </SkillList>
+  </SkillsWrapper>
+);
 
 export default Skills;

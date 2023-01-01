@@ -1,8 +1,12 @@
 import React from 'react';
-import uniqid from 'uniqid';
+import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import { experiencies } from '../../data/portfolio';
 import ExperienceItem from './ExperienceItem';
+
+const ExperienceSection = styled.section`
+
+`;
 
 const SectionTitle = styled.h2`
     text-align: center;
@@ -18,22 +22,19 @@ const ExperienceGrid = styled.div`
     grid-gap: 2rem;
 `;
 
-const Experience = () => {
-  const id = uniqid();
-  return (
-    <div>
-      { experiencies && (
-        <>
-          <SectionTitle>My Experience</SectionTitle>
-          <ExperienceGrid>
-            {experiencies.map((experience) => (
-              <ExperienceItem key={id} experience={experience} />
-            ))}
-          </ExperienceGrid>
-        </>
-      )}
-    </div>
-  );
-};
+const Experience = () => (
+  <div>
+    { experiencies && (
+    <ExperienceSection id="experience">
+      <SectionTitle>My Experience</SectionTitle>
+      <ExperienceGrid>
+        {experiencies.map((experience) => (
+          <ExperienceItem key={uuidv4()} experience={experience} />
+        ))}
+      </ExperienceGrid>
+    </ExperienceSection>
+    )}
+  </div>
+);
 
 export default Experience;

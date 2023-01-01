@@ -4,11 +4,14 @@ import Brightness2Icon from '@mui/icons-material/Brightness2';
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { projects, skills } from '../../data/portfolio';
+import {
+  projects, skills, testimonies, experiencies,
+} from '../../data/portfolio';
 import { ThemeContext } from '../../contexts/theme';
 
 const NavWrapper = styled.nav`
-    
+    display: flex;
+    align-items: center;
 `;
 
 const NavMenu = styled.ul`
@@ -19,12 +22,14 @@ const NavMenu = styled.ul`
     position: fixed;
     inset: 0;
     width: 100%;
-    height: 100%;
-    z-index: 2;
+    // height: 100vh;
 
     @media (min-width: 600px) {
         margin-right: 1.5rem;
         display: flex;
+        flex-direction: row;
+        position: static;
+        height: 100%;
     }
 `;
 
@@ -55,7 +60,7 @@ const Navbar = () => {
   const [{ themeName, toggleTheme }] = useContext(ThemeContext);
 
   const toggleNavMenu = () => {
-    setShowNavMenu(!setShowNavMenu);
+    setShowNavMenu(!showNavMenu);
   };
 
   return (
@@ -85,8 +90,29 @@ const Navbar = () => {
           </NavItem>
         ) : null }
 
-      </NavMenu>
+        { testimonies.length ? (
+          <NavItem>
+            <a
+              href="#testimonials"
+              onClick={toggleNavMenu}
+            >
+              Testimonials
+            </a>
+          </NavItem>
+        ) : null }
 
+        { experiencies.length ? (
+          <NavItem>
+            <a
+              href="#experience"
+              onClick={toggleNavMenu}
+            >
+              My Experience
+            </a>
+          </NavItem>
+        ) : null }
+
+      </NavMenu>
       <NavThemeButton
         type="button"
         onClick={toggleTheme}
