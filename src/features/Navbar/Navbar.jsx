@@ -55,6 +55,36 @@ const NavHumbugerButton = styled.button`
     }
 `;
 
+const NavLink = styled.a`
+    color: #555;
+    text-transform: lowercase;
+    font-weight: 500;
+
+    // color: var(--clr-primary);
+  padding: 0 0 0.3em 0;
+  position: relative;
+
+  &:hover { 
+    color: #2978b5;
+  }
+
+  &::before {
+    content: '';
+    display: inline;
+    width: 0%;
+    height: 0.2em;
+    position: absolute;
+    bottom: 0;
+    background-color: #2978b5;
+    transition: width 0.2s ease-in;
+  }
+
+    &:hover::before,
+    &:focus::before {
+    width: 100%;
+}
+`;
+
 const Navbar = () => {
   const [showNavMenu, setShowNavMenu] = useState(false);
   const [{ themeName, toggleTheme }] = useContext(ThemeContext);
@@ -70,45 +100,45 @@ const Navbar = () => {
       >
         { projects.length ? (
           <NavItem>
-            <a
+            <NavLink
               href="#projects"
               onClick={toggleNavMenu}
             >
               Projects
-            </a>
+            </NavLink>
           </NavItem>
         ) : null }
 
         { skills.length ? (
           <NavItem>
-            <a
+            <NavLink
               href="#skills"
               onClick={toggleNavMenu}
             >
               Skills
-            </a>
+            </NavLink>
           </NavItem>
         ) : null }
 
         { testimonies.length ? (
           <NavItem>
-            <a
+            <NavLink
               href="#testimonials"
               onClick={toggleNavMenu}
             >
               Testimonials
-            </a>
+            </NavLink>
           </NavItem>
         ) : null }
 
         { experiencies.length ? (
           <NavItem>
-            <a
+            <NavLink
               href="#experience"
               onClick={toggleNavMenu}
             >
               My Experience
-            </a>
+            </NavLink>
           </NavItem>
         ) : null }
 
