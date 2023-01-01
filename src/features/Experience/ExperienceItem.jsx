@@ -1,7 +1,8 @@
-/* eslint-disable react/prop-types */
+// /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import { PropTypes } from 'prop-types';
 
 const ExperienceGridItem = styled.div`
     padding: 2em;
@@ -45,5 +46,9 @@ const ExperienceItem = ({ experience }) => (
     </ExperienceDetail>
   </ExperienceGridItem>
 );
+
+ExperienceItem.propTypes = {
+  experience: PropTypes.node.isRequired,
+};
 
 export default ExperienceItem;

@@ -28,6 +28,7 @@ const Footer = () => (
     <div>
       <FooterParagraph>
         Copyright &copy;
+        {' '}
         {new Date().getFullYear()}
       </FooterParagraph>
     </div>

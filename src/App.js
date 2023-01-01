@@ -9,12 +9,14 @@ import Skills from './features/Skills/Skills';
 import Contact from './features/Contact/Contact';
 import Testimony from './features/Testimony/Testimony';
 import Experience from './features/Experience/Experience';
+import ScrollToTop from './features/ScrollToTop/ScrollToTop';
 
 const App = () => {
   const [{ themeName }] = useContext(ThemeContext);
   return (
     <div id="top" className={`${themeName} app`}>
       <Header />
+
       <main>
         <About />
         <Projects />
@@ -23,6 +25,8 @@ const App = () => {
         <Testimony />
         <Contact />
       </main>
+
+      <ScrollToTop />
       <Footer />
     </div>
   );

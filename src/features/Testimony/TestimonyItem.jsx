@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import { PropTypes } from 'prop-types';
 
 const TestimonyGridItem = styled.div`
     padding: 2em;
@@ -50,5 +50,9 @@ const TestimonyItem = ({ testimony }) => (
     </TestimonyDetail>
   </TestimonyGridItem>
 );
+
+TestimonyItem.propTypes = {
+  testimony: PropTypes.node.isRequired,
+};
 
 export default TestimonyItem;

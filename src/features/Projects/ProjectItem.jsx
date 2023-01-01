@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import LinkIcon from '@mui/icons-material/Link';
 import LaunchIcon from '@mui/icons-material/Launch';
+import { PropTypes } from 'prop-types';
 
 const ProjectGridItem = styled.div`
     padding: 2em;
@@ -81,5 +81,9 @@ const ProjectItem = ({ project }) => (
     </div>
   </ProjectGridItem>
 );
+
+ProjectItem.propTypes = {
+  project: PropTypes.node.isRequired,
+};
 
 export default ProjectItem;
