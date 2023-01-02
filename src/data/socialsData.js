@@ -1,10 +1,10 @@
 const socialsData = {
-  github: 'https://github.com/sreerag-rajan',
+  github: 'https://github.com/',
   facebook: '',
-  linkedIn: 'https://www.linkedin.com/in/sreerag-rajan-55383a222',
+  linkedIn: 'https://www.linkedin.com/in/',
   instagram: '',
   codepen: '',
-  twitter: '',
+  twitter: 'https://www.twitter.com/',
   reddit: '',
   blogger: '',
   medium: 'https://medium.com/@sreerag.rajan5',
