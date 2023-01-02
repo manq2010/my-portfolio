@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 import About from '../../features/About/About';
 import Hero from '../../features/Hero/Hero';
 // import Projects from '../../features/Projects/Projects';
-// import Skills from '../../features/Skills/Skills';
+import Skills from '../../features/Skills/Skills';
 // import Contact from '../../features/Contact/Contact';
 // // import Testimony from '../../features/Testimony/Testimony';
 // import Experience from '../../features/Experience/Experience';

@@ -1,7 +1,8 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
-import { skills } from '../../data/portfolio';
+import Marquee from 'react-fast-marquee';
+import skills from '../../data/skillsData';
 
 const SkillsWrapper = styled.section`
 margin-top: 5em;
@@ -22,9 +23,20 @@ margin: 0.5rem;
 
 const Skills = () => (
   <SkillsWrapper id="skills">
-    <h2>Skills</h2>
+    <div>
+      <h2>Skills</h2>
+    </div>
     <SkillList>
-      {
+      <Marquee
+        gradient={false}
+        speed={80}
+        pauseOnHover
+        pauseOnClick
+        delay={0}
+        play
+        direction="left"
+      >
+        {
             skills && (
               skills.map((skill) => (
                 <SkillItem key={uuidv4()}>
@@ -33,6 +45,7 @@ const Skills = () => (
               ))
             )
         }
+      </Marquee>
     </SkillList>
   </SkillsWrapper>
 );
