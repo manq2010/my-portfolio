@@ -1,41 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
-import { about } from '../../data/portfolio';
+import about from '../../data/aboutData';
 
-const Button = styled.button`
-    display: block;
-    cursor: pointer;
-    padding: 0.8em 1.4em;
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-transform: lowercase;
-    transition: transform 0.2s ease-in-out;
-    
-    color: #2978b5;
-    border: 2px solid #2978b5;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+// const Button = styled.button`
+//     display: block;
+//     cursor: pointer;
+//     padding: 0.8em 1.4em;
+//     font-weight: 500;
+//     font-size: 0.9rem;
+//     text-transform: lowercase;
+//     transition: transform 0.2s ease-in-out;
 
- 
-    &::before {
-        content: '';
-        position: absolute;
-        background-color: #2978b5;
-        right: 100%;
-        bottom: 0;
-        left: 0;
-        top: 0;
-        z-index: -1;
-        transition: right 0.2s ease-in-out;
-      }
+//     color: #2978b5;
+//     border: 2px solid #2978b5;
+//     position: relative;
+//     overflow: hidden;
+//     z-index: 1;
 
-      &:hover::before,,
-      &:focus::before, {
-          color: #23283e;
-      }
-  
-`;
+//     &::before {
+//         content: '';
+//         position: absolute;
+//         background-color: #2978b5;
+//         right: 100%;
+//         bottom: 0;
+//         left: 0;
+//         top: 0;
+//         z-index: -1;
+//         transition: right 0.2s ease-in-out;
+//       }
+
+//       &:hover::before,,
+//       &:focus::before, {
+//           color: #23283e;
+//       }
+
+// `;
 
 const AboutWrapper = styled.section`
 
@@ -43,29 +42,29 @@ const AboutWrapper = styled.section`
 
 const About = () => {
   const {
-    name, role, description, button,
+    title, description,
   } = about;
   return (
-    <AboutWrapper>
-      { name && (
+    <AboutWrapper id="about">
+      { title && (
         <div>
           <h3>
             HI, MY NAME IS
           </h3>
           <h1>
-            {name}
+            {title}
             .
           </h1>
 
         </div>
 
       )}
-      { role && (
+      { description && (
         <div>
           <h1>
             I am a
             {' '}
-            {role}
+            {description}
             .
           </h1>
         </div>
@@ -80,7 +79,7 @@ const About = () => {
         </div>
       )}
 
-      { button && (
+      {/* { button && (
       <Button type="button">
         <a
           href={about.social.linkedin}
@@ -90,7 +89,7 @@ const About = () => {
           {button}
         </a>
       </Button>
-      )}
+      )} */}
     </AboutWrapper>
   );
 };

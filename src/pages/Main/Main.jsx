@@ -3,7 +3,8 @@ import { Helmet } from 'react-helmet';
 
 // import Footer from '../../features/Footer/Footer';
 // // import Header from '../../features/Header/Header';
-// import About from '../../features/About/About';
+import About from '../../features/About/About';
+import Hero from '../../features/Hero/Hero';
 // import Projects from '../../features/Projects/Projects';
 // import Skills from '../../features/Skills/Skills';
 // import Contact from '../../features/Contact/Contact';
@@ -11,15 +12,28 @@ import { Helmet } from 'react-helmet';
 // import Experience from '../../features/Experience/Experience';
 // // import ScrollToTop from '../../features/ScrollToTop/ScrollToTop';
 import Navbar from '../../features/Navbar/Navbar';
-// import Header from '../../features/Header/Header';
+import headerData from '../../data/headerData';
 
 const Main = () => (
   <div>
     <Helmet>
-      <title>My - Portfolio</title>
+      <title>
+        {headerData.name}
+        {' '}
+        - Portfolio
+      </title>
     </Helmet>
 
     <Navbar />
+
+    <About />
+    <Hero />
+    <Skills />
+    {/* <Projects /> */}
+    {/* <Contact /> */}
+    {/* <Experience /> */}
+    {/* <Footer /> */}
+
     {/* <Header /> */}
     {/* <Navbar />
     <main>
