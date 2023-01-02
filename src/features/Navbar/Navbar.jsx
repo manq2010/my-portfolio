@@ -1,12 +1,15 @@
 import React, { useState, useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Brightness2Icon from '@mui/icons-material/Brightness2';
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
+import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import {
-  projects, skills, testimonies, experiencies,
-} from '../../data/portfolio';
+import headerData from '../../data/headerData';
+import projectsData from '../../data/projectsData';
+import skillsData from '../../data/skillsData';
+import educationData from '../../data/educationData';
 import { ThemeContext } from '../../contexts/theme';
 
 const NavWrapper = styled.nav`
@@ -55,35 +58,67 @@ const NavHumbugerButton = styled.button`
     }
 `;
 
-const NavLink = styled.a`
-    color: #555;
-    text-transform: lowercase;
-    font-weight: 500;
+// const NavLinksss = styled.a`
+//     color: #555;
+//     text-transform: lowercase;
+//     font-weight: 500;
 
-    // color: var(--clr-primary);
-  padding: 0 0 0.3em 0;
-  position: relative;
+//     // color: var(--clr-primary);
+//   padding: 0 0 0.3em 0;
+//   position: relative;
 
-  &:hover { 
-    color: #2978b5;
-  }
+//   &:hover {
+//     color: #2978b5;
+//   }
 
-  &::before {
-    content: '';
-    display: inline;
-    width: 0%;
-    height: 0.2em;
-    position: absolute;
-    bottom: 0;
-    background-color: #2978b5;
-    transition: width 0.2s ease-in;
-  }
+//   &::before {
+//     content: '';
+//     display: inline;
+//     width: 0%;
+//     height: 0.2em;
+//     position: absolute;
+//     bottom: 0;
+//     background-color: #2978b5;
+//     transition: width 0.2s ease-in;
+//   }
 
-    &:hover::before,
-    &:focus::before {
-    width: 100%;
-}
-`;
+//     &:hover::before,
+//     &:focus::before {
+//     width: 100%;
+// }
+// `;
+
+// const NavBar = styled.nav`
+// display: flex;
+// flex-direction: row;
+// justify-content: space-between;
+// height: 5rem;
+// align-items: center;
+// border-bottom: 1px solid gray
+// `;
+
+// const MenuNavUL = styled.ul`
+//   list-style: none;
+//   position: relative;
+//   color: #121212;
+//   display: flex;
+//   gap: 1rem;
+//   margin-top: 0;
+//   align-items: center;
+//   justify-content: space-between;
+//   height: 2.5rem;
+//   font-family: "Montserrat",sans-serif;
+//   font-size: .813rem;
+//   letter-spacing: 1.9px;
+//   margin-right: 5rem;
+// `;
+
+// const MenuLI = styled.li`
+//   font-weight: bold;
+//   a:link {
+//     text-decoration: none;
+//   }
+// `;
 
 const Navbar = () => {
   const [showNavMenu, setShowNavMenu] = useState(false);
@@ -93,25 +128,77 @@ const Navbar = () => {
     setShowNavMenu(!showNavMenu);
   };
 
+  const shortname = (name) => {
+    if (name.length > 12) {
+      return name.split(' ')[0];
+    }
+    return name;
+  };
+
+  // const links = [
+  //   {
+  //     id: 1,
+  //     path: '/',
+  //     text: 'Rockets',
+  //   },
+  //   {
+  //     id: 2,
+  //     path: '/missions',
+  //     text: 'Missions',
+  //   },
+  //   {
+  //     id: 3,
+  //     path: '/myprofile',
+  //     text: 'My Profile',
+  //   },
+  // ];
+
+  const navLinkStyles = ({ isActive }) => ({
+    fontWeight: isActive ? 'bold' : 'bold',
+    color: isActive ? 'white' : 'rgb(4, 118, 248)',
+    backgroundColor: isActive ? 'rgb(4, 118, 248)' : 'white',
+    padding: isActive ? '0.5rem' : '0',
+    borderRadius: isActive ? '0.2rem' : '0',
+  });
+
   return (
     <NavWrapper>
       <NavMenu
         style={{ display: showNavMenu ? 'flex' : null }}
       >
-        { projects.length ? (
+
+        <h1>
+          {shortname(headerData.name)}
+        </h1>
+        <NavItem>
+          <NavLink
+            to="/"
+            href=""
+            onClick={toggleNavMenu}
+            style={navLinkStyles}
+          >
+            <HomeIcon />
+            Home
+          </NavLink>
+        </NavItem>
+
+        { projectsData.length ? (
           <NavItem>
             <NavLink
+              to="/projects"
               href="#projects"
               onClick={toggleNavMenu}
+              // style={navLinkStyles}
             >
               Projects
             </NavLink>
           </NavItem>
         ) : null }
 
-        { skills.length ? (
+        { skillsData.length ? (
           <NavItem>
             <NavLink
+              to="/skills"
               href="#skills"
               onClick={toggleNavMenu}
             >
@@ -120,24 +207,34 @@ const Navbar = () => {
           </NavItem>
         ) : null }
 
-        { testimonies.length ? (
-          <NavItem>
-            <NavLink
-              href="#testimonials"
-              onClick={toggleNavMenu}
-            >
-              Testimonials
-            </NavLink>
-          </NavItem>
-        ) : null }
+        <NavItem>
+          <NavLink
+            to="/about"
+            href="#about"
+            onClick={toggleNavMenu}
+          >
+            About
+          </NavLink>
+        </NavItem>
 
-        { experiencies.length ? (
+        <NavItem>
+          <NavLink
+            to="/contacts"
+            href="#contacts"
+            onClick={toggleNavMenu}
+          >
+            Contacts
+          </NavLink>
+        </NavItem>
+
+        { educationData.length ? (
           <NavItem>
             <NavLink
-              href="#experience"
+              to="/experince"
+              href="#experince"
               onClick={toggleNavMenu}
             >
-              My Experience
+              Experience
             </NavLink>
           </NavItem>
         ) : null }
@@ -159,6 +256,20 @@ const Navbar = () => {
       </NavHumbugerButton>
 
     </NavWrapper>
+
+  // <NavBar>
+  //   {/* <Logo /> */}
+  //   <h1>test</h1>
+  //   <MenuNavUL>
+  //     {links.map((link) => (
+  //       <MenuLI key={link.id} aria-hidden="true">
+  //         <NavLink style={navLinkStyles} data-testid={link.text} to={link.path}>
+  //           {link.text}
+  //         </NavLink>
+  //       </MenuLI>
+  //     ))}
+  //   </MenuNavUL>
+  // </NavBar>
   );
 };
 

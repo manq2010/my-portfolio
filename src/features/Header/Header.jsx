@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { header } from '../../data/portfolio';
-import Navbar from '../Navbar/Navbar';
+// import Navbar from '../Navbar/Navbar';
 
 const HeaderWrapper = styled.header`
     display: flex;
@@ -28,7 +28,7 @@ const Header = () => {
           title
         )}
       </h3>
-      <Navbar />
+      {/* <Navbar /> */}
     </HeaderWrapper>
   );
 };
