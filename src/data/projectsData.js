@@ -28,6 +28,24 @@ const projects = [
     livePreview: 'https://github.com',
     image: 'Project 3',
   },
+  {
+    name: 'Project 4',
+    description:
+          'Amet asperiores et impedit aliquam consectetur? Voluptates sed a nulla ipsa officia et esse aliquam',
+    stack: ['SASS', 'TypeScript', 'React'],
+    sourceCode: 'https://github.com',
+    livePreview: 'https://github.com',
+    image: 'Project 4',
+  },
+  {
+    name: 'Project 5',
+    description:
+          'Amet asperiores et impedit aliquam consectetur? Voluptates sed a nulla ipsa officia et esse aliquam',
+    stack: ['SASS', 'TypeScript', 'React'],
+    sourceCode: 'https://github.com',
+    livePreview: 'https://github.com',
+    image: 'Project 5',
+  },
 ];
 
 export default projects;

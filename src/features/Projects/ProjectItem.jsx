@@ -1,9 +1,9 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
-import LinkIcon from '@mui/icons-material/Link';
-import LaunchIcon from '@mui/icons-material/Launch';
 import { PropTypes } from 'prop-types';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import CodeIcon from '@mui/icons-material/Code';
 
 const ProjectGridItem = styled.div`
     padding: 2em;
@@ -39,22 +39,27 @@ const ProjectDescription = styled.p`
 const ProjectItem = ({ project }) => (
   <ProjectGridItem>
     <div>
-      <img src={project.image} alt={project.name} />
-    </div>
-    <div>
-      <h3>{project.name}</h3>
-      <ProjectDescription>{project.description}</ProjectDescription>
+      <h2>{project.name}</h2>
+      <img src={project.image ? project.image : ''} alt={project.name} />
 
       {
         project.livePreview && (
+        <a href={project.livePreview} target="_blank" rel="noreferrer">
+          <PlayCircleIcon />
+        </a>
+
+        )
+        }
+      {
+        project.sourceCode && (
         <a href={project.sourceCode} target="_blank" rel="noreferrer">
-          {' '}
-          <LinkIcon />
-          {' '}
-          Github
+          <CodeIcon />
         </a>
         )
         }
+    </div>
+    <ProjectDescription>{project.description}</ProjectDescription>
+    <div>
       {
         project.stack && (
         <ProjectStack>
@@ -66,18 +71,6 @@ const ProjectItem = ({ project }) => (
         </ProjectStack>
         )
       }
-
-      {
-        project.livePreview && (
-        <a href={project.livePreview} target="_blank" rel="noreferrer">
-          View Demo
-          {' '}
-          <LaunchIcon />
-          {' '}
-        </a>
-        )
-        }
-
     </div>
   </ProjectGridItem>
 );

@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 // // import Header from '../../features/Header/Header';
 import About from '../../features/About/About';
 import Hero from '../../features/Hero/Hero';
-// import Projects from '../../features/Projects/Projects';
+import Projects from '../../features/Projects/Projects';
 import Skills from '../../features/Skills/Skills';
 // import Contact from '../../features/Contact/Contact';
 // // import Testimony from '../../features/Testimony/Testimony';
@@ -29,7 +29,7 @@ const Main = () => (
     <About />
     <Hero />
     <Skills />
-    {/* <Projects /> */}
+    <Projects />
     {/* <Contact /> */}
     {/* <Experience /> */}
     {/* <Footer /> */}
