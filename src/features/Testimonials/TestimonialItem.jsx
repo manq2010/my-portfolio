@@ -26,23 +26,22 @@ const TestimonyDescription = styled.p`
     margin-top: 1em;
 `;
 
-const TestimonyItem = ({ testimony }) => (
+const TestimonialItem = ({ testimony }) => (
   <TestimonyGridItem>
     <TestimonyDetail>
-      <TestimonyDescription>
-        {testimony.testimonial}
-      </TestimonyDescription>
       <div>
-        <div>
-          <img src="" alt={testimony.name} />
-        </div>
-        <div>
+        <img src={testimony.image} alt={testimony.name} />
+      </div>
+      <div>
+        <TestimonyDescription>
+          {testimony.text}
+        </TestimonyDescription>
+        <h4>
           {testimony.name}
-          <br />
-          {testimony.role}
-          @
-          {testimony.company}
-        </div>
+        </h4>
+        <h5>
+          {testimony.title}
+        </h5>
       </div>
       <div>
         {testimony.logo}
@@ -51,8 +50,8 @@ const TestimonyItem = ({ testimony }) => (
   </TestimonyGridItem>
 );
 
-TestimonyItem.propTypes = {
+TestimonialItem.propTypes = {
   testimony: PropTypes.node.isRequired,
 };
 
-export default TestimonyItem;
+export default TestimonialItem;
