@@ -1,45 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import styled from 'styled-components';
 
-const ScrollTop = styled.div`
-    display: none;
+function ScrollToTop() {
+  const [visible, setVisible] = useState(false);
 
-    @media ( min-width: 768px ){
-        display: block;
-        position: fixed;
-        bottom: 2em;
-        right: 4em;
-        background-color: transparent;
-}
-`;
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 300) {
+      setVisible(true);
+    } else if (scrolled <= 300) {
+      setVisible(false);
+    }
+  };
 
-const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const backToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
-  useEffect(() => {
-    const toggleVisibility = () => (
-      window.pageYOffset > 500 ? setIsVisible(true) : setIsVisible(false)
-    );
+  window.addEventListener('scroll', toggleVisible);
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
+  // const useStyles = makeStyles(() => ({
+  //   icon: {
+  //     fontSize: '3rem',
+  //     color: theme.tertiary,
+  //   },
+  // }));
+
+  // const classes = useStyles();
 
   return (
-    <>
-      {
-        isVisible ? (
-          <ScrollTop>
-            <a href="#top">
-              <ArrowUpwardIcon fontSize="large" />
-            </a>
-          </ScrollTop>
-        ) : null
-    }
-
-    </>
+    <div
+      style={{ display: visible ? 'inline' : 'none' }}
+      className="backToTop"
+    >
+      <button
+        type="button"
+        onClick={backToTop}
+        aria-label="Back to top"
+      >
+        <ArrowUpwardIcon style={{ fontSize: '3rem' }} />
+      </button>
+    </div>
   );
-};
+}
 
 export default ScrollToTop;
