@@ -25,7 +25,7 @@ const ProjectGrid = styled.div`
 `;
 
 const Projects = () => (
-  <>
+  <section id="projects">
     { projects.length && (
       <ProjectSectionWrapper id="projects">
         <SectionTitle>Projects</SectionTitle>
@@ -50,7 +50,7 @@ const Projects = () => (
           }
       </ProjectSectionWrapper>
     )}
-  </>
+  </section>
 );
 
 export default Projects;

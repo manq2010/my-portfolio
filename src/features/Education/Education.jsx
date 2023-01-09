@@ -2,7 +2,7 @@ import React from 'react';
 import educationData from '../../data/educationData';
 
 const Education = () => (
-  <div>
+  <div id="education">
     {
         educationData && (
         <div>

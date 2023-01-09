@@ -21,7 +21,7 @@ color: #2978b5;
 `;
 
 const Footer = () => (
-  <FooterWrapper>
+  <FooterWrapper id="footer">
     <div>
       <FooterParagraph>Created by Mancoba Sihlongonyane</FooterParagraph>
     </div>

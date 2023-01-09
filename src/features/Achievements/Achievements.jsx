@@ -2,7 +2,7 @@ import React from 'react';
 import achievementData from '../../data/achievementData';
 
 const Achievements = () => (
-  <div>
+  <div id="achievements">
     {
         achievementData && (
         <div>

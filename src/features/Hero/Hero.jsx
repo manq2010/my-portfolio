@@ -13,7 +13,7 @@ const HeroWrapper = styled.div`
 `;
 
 const Hero = () => (
-  <HeroWrapper>
+  <HeroWrapper id="home">
     <div>
       {socialsData.linkedIn && (
         <a

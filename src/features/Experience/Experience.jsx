@@ -23,7 +23,7 @@ const ExperienceGrid = styled.div`
 `;
 
 const Experience = () => (
-  <div>
+  <div id="experience">
     { experiencies && (
     <ExperienceSection id="experience">
       <SectionTitle>My Experience</SectionTitle>
