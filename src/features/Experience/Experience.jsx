@@ -9,17 +9,11 @@ const ExperienceSection = styled.section`
 `;
 
 const SectionTitle = styled.h2`
-    text-align: center;
-    margin-bottom: 1rem;
-    ;text-transform: uppercase;
+
 `;
 
 const ExperienceGrid = styled.div`
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-    grid-gap: 2rem;
+
 `;
 
 const Experience = () => (

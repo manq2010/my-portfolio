@@ -6,20 +6,15 @@ import skills from '../../data/skillsData';
 import skillsImage from '../../utils/skillsImage';
 
 const SkillsWrapper = styled.section`
-margin-top: 5em;
+
 `;
 
 const SkillList = styled.ul`
-max-width: 450px;
-width: 95%;
-margin: 0 auto;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
+
 `;
 
 const SkillItem = styled.div`
-margin: 0.5rem;
+
 `;
 
 const Skills = () => (

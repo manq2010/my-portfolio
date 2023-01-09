@@ -6,34 +6,19 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import CodeIcon from '@mui/icons-material/Code';
 
 const ProjectGridItem = styled.div`
-    padding: 2em;
-    margin: 0 auto;
-    text-align: center;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s linear;
-    margin-left: 0.5em;
 
-    &:hover {
-        transform: translateY(-7px);
-      }
 `;
 
 const ProjectStack = styled.ul`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 1.2em 0;
+
 `;
 
 const ProjectStackItem = styled.li`
-    margin: 0.5em;
-    font-weight: 500;
-    font-size: 0.8rem;
-    color: red;
+
 `;
 
 const ProjectDescription = styled.p`
-    margin-top: 1em;
+ 
 `;
 
 const ProjectItem = ({ project }) => (

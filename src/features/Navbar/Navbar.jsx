@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Brightness2Icon from '@mui/icons-material/Brightness2';
@@ -13,49 +13,23 @@ import educationData from '../../data/educationData';
 import { ThemeContext } from '../../contexts/theme';
 
 const NavWrapper = styled.nav`
-    display: flex;
-    align-items: center;
+
 `;
 
 const NavMenu = styled.ul`
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    // height: 100vh;
 
-    @media (min-width: 600px) {
-        margin-right: 1.5rem;
-        display: flex;
-        flex-direction: row;
-        position: static;
-        height: 100%;
-    }
 `;
 
 const NavItem = styled.li`
-    margin: 0.5rem 0;
 
-    @media (min-width: 600px) {
-        margin-left: 1.5rem;
-    }
 `;
 
 const NavThemeButton = styled.button`
-    margin-top: 0.4rem;
+ 
 `;
 
 const NavHumbugerButton = styled.button`
-    display: flex;
-    z-index: 2;
-    margin-left: 0.8rem;
 
-    @media (min-width: 600px) {
-       display: none;
-    }
 `;
 
 // const NavLinksss = styled.a`
@@ -153,13 +127,21 @@ const Navbar = () => {
   //   },
   // ];
 
-  const navLinkStyles = ({ isActive }) => ({
-    fontWeight: isActive ? 'bold' : 'bold',
-    color: isActive ? 'white' : 'rgb(4, 118, 248)',
-    backgroundColor: isActive ? 'rgb(4, 118, 248)' : 'white',
-    padding: isActive ? '0.5rem' : '0',
-    borderRadius: isActive ? '0.2rem' : '0',
-  });
+  // const navLinkStyles = ({ isActive }) => ({
+  //   fontWeight: isActive ? 'bold' : 'bold',
+  //   color: isActive ? 'white' : 'rgb(4, 118, 248)',
+  //   backgroundColor: isActive ? 'rgb(4, 118, 248)' : 'white',
+  //   padding: isActive ? '0.5rem' : '0',
+  //   borderRadius: isActive ? '0.2rem' : '0',
+  // });
+  const skillsRef = useRef();
+  const handleScroll = () => {
+    window.scrollTo({
+      top: skillsRef.current.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <NavWrapper>
@@ -175,7 +157,7 @@ const Navbar = () => {
           to="/"
           href=""
           onClick={toggleNavMenu}
-          style={navLinkStyles}
+          // style={navLinkStyles}
         >
           <HomeIcon />
           Home
@@ -196,14 +178,15 @@ const Navbar = () => {
 
         { skillsData.length ? (
           <NavItem>
-            <a
+            <NavLink
               to="/#skills"
               // to="/skills"
-              href="#skills"
-              onClick={toggleNavMenu}
+              // href="#skills"
+              // ref={skillsRef}
+              onClick={handleScroll}
             >
               Skills
-            </a>
+            </NavLink>
             {/* <NavLink
               to={{ hash: '#skills' }}
               scrollTo={{ behavior: 'smooth', block: 'start' }}

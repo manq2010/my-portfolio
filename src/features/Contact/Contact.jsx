@@ -8,8 +8,6 @@ import contactsData from '../../data/contactsData';
 import socialsData from '../../data/socialsData';
 
 const ContactWrapper = styled.section`
-    display: flex;
-    flex-direction: column;
 `;
 
 const Contact = () => (
