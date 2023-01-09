@@ -13,6 +13,7 @@ import Contact from '../../features/Contact/Contact';
 // // import ScrollToTop from '../../features/ScrollToTop/ScrollToTop';
 import headerData from '../../data/headerData';
 import Education from '../../features/Education/Education';
+import Achievements from '../../features/Achievements/Achievements';
 
 const Main = () => (
   <div>
@@ -32,7 +33,7 @@ const Main = () => (
     <Projects />
     {/* <Testimonials /> */}
     <Education />
-    {/* <Achievement /> */}
+    <Achievements />
     {/* <Experience /> */}
     <Contact />
     {/* <Footer /> */}

@@ -9,7 +9,7 @@ const Education = () => (
           <h2>Education</h2>
           <div className="education-data">
             {educationData.map((education) => (
-              <div key={education.is}>
+              <div key={education.id}>
                 <h4>{education.institution}</h4>
                 <div>{education.course}</div>
                 <div>
@@ -22,7 +22,6 @@ const Education = () => (
               </div>
             ))}
           </div>
-
         </div>
 
         )
