@@ -170,17 +170,16 @@ const Navbar = () => {
         <h1>
           {shortname(headerData.name)}
         </h1>
-        <NavItem>
-          <NavLink
-            to="/"
-            href=""
-            onClick={toggleNavMenu}
-            style={navLinkStyles}
-          >
-            <HomeIcon />
-            Home
-          </NavLink>
-        </NavItem>
+
+        <NavLink
+          to="/"
+          href=""
+          onClick={toggleNavMenu}
+          style={navLinkStyles}
+        >
+          <HomeIcon />
+          Home
+        </NavLink>
 
         { projectsData.length ? (
           <NavItem>
@@ -197,19 +196,26 @@ const Navbar = () => {
 
         { skillsData.length ? (
           <NavItem>
-            <NavLink
-              to="/skills"
+            <a
+              to="/#skills"
+              // to="/skills"
               href="#skills"
               onClick={toggleNavMenu}
             >
               Skills
-            </NavLink>
+            </a>
+            {/* <NavLink
+              to={{ hash: '#skills' }}
+              scrollTo={{ behavior: 'smooth', block: 'start' }}
+            >
+              SkillsW
+            </NavLink> */}
           </NavItem>
         ) : null }
 
         <NavItem>
           <NavLink
-            to="/about"
+            to="/#about"
             href="#about"
             onClick={toggleNavMenu}
           >
@@ -218,24 +224,24 @@ const Navbar = () => {
         </NavItem>
 
         <NavItem>
-          <NavLink
-            to="/contacts"
+          <a
+            to="/#contacts"
             href="#contacts"
             onClick={toggleNavMenu}
           >
             Contacts
-          </NavLink>
+          </a>
         </NavItem>
 
         { educationData.length ? (
           <NavItem>
-            <NavLink
-              to="/experince"
-              href="#experince"
+            <a
+              to="/#experience"
+              href="#experience"
               onClick={toggleNavMenu}
             >
               Experience
-            </NavLink>
+            </a>
           </NavItem>
         ) : null }
 

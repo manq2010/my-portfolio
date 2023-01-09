@@ -13,7 +13,7 @@ const ContactWrapper = styled.section`
 `;
 
 const Contact = () => (
-  <div id="contact">
+  <div id="contacts">
     {
       contactsData && (
       <ContactWrapper>

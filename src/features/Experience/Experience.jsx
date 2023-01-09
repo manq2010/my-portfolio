@@ -25,7 +25,7 @@ const ExperienceGrid = styled.div`
 const Experience = () => (
   <div id="experience">
     { experiencies && (
-    <ExperienceSection id="experience">
+    <ExperienceSection>
       <SectionTitle>My Experience</SectionTitle>
       <ExperienceGrid>
         {experiencies.map((experience) => (
