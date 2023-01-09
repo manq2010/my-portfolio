@@ -12,11 +12,11 @@ const App = () => {
   return (
     <div id="top" className={`${themeName} app`}>
       <Router>
-        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/projects" exact element={<ProjectPage />} />
         </Routes>
+        <ScrollToTop />
       </Router>
     </div>
   );

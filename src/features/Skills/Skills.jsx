@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import Marquee from 'react-fast-marquee';
 import skills from '../../data/skillsData';
+import skillsImage from '../../utils/skillsImage';
 
 const SkillsWrapper = styled.section`
 margin-top: 5em;
@@ -17,7 +18,7 @@ flex-wrap: wrap;
 justify-content: center;
 `;
 
-const SkillItem = styled.li`
+const SkillItem = styled.div`
 margin: 0.5rem;
 `;
 
@@ -40,7 +41,10 @@ const Skills = () => (
             skills && (
               skills.map((skill) => (
                 <SkillItem key={uuidv4()}>
-                  {skill}
+                  <img src={skillsImage(skill)} alt={skill} style={{ height: '100px' }} />
+                  <h4>
+                    {skill}
+                  </h4>
                 </SkillItem>
               ))
             )
