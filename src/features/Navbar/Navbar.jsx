@@ -1,5 +1,6 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import Brightness2Icon from '@mui/icons-material/Brightness2';
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
@@ -94,7 +95,7 @@ const NavHumbugerButton = styled.button`
 //   }
 // `;
 
-const Navbar = () => {
+const Navbar = ({ handleScroll }) => {
   const [showNavMenu, setShowNavMenu] = useState(false);
   const [{ themeName, toggleTheme }] = useContext(ThemeContext);
 
@@ -134,14 +135,14 @@ const Navbar = () => {
   //   padding: isActive ? '0.5rem' : '0',
   //   borderRadius: isActive ? '0.2rem' : '0',
   // });
-  const skillsRef = useRef();
-  const handleScroll = () => {
-    window.scrollTo({
-      top: skillsRef.current.offsetTop,
-      left: 0,
-      behavior: 'smooth',
-    });
-  };
+  // const skillsRef = useRef();
+  // const handleScroll = () => {
+  //   window.scrollTo({
+  //     top: skillsRef.current.offsetTop,
+  //     left: 0,
+  //     behavior: 'smooth',
+  //   });
+  // };
 
   return (
     <NavWrapper>
@@ -179,7 +180,7 @@ const Navbar = () => {
         { skillsData.length ? (
           <NavItem>
             <NavLink
-              to="/#skills"
+              to="/"
               // to="/skills"
               // href="#skills"
               // ref={skillsRef}
@@ -260,6 +261,10 @@ const Navbar = () => {
   //   </MenuNavUL>
   // </NavBar>
   );
+};
+
+Navbar.propTypes = {
+  handleScroll: PropTypes.node.isRequired,
 };
 
 export default Navbar;

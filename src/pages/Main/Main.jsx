@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '../../features/Navbar/Navbar';
 import About from '../../features/About/About';
@@ -13,29 +13,41 @@ import Achievements from '../../features/Achievements/Achievements';
 import Footer from '../../features/Footer/Footer';
 // import Testimonials from '../../features/Testimonials/Testimonials';
 
-const Main = () => (
-  <div>
-    <Helmet>
-      <title>
-        {headerData.name}
-        {' '}
-        - Portfolio
-      </title>
-    </Helmet>
+const Main = () => {
+  const skillsRef = useRef();
+  const handleScroll = () => {
+    window.scrollTo({
+      top: skillsRef.current.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+  return (
 
-    <Navbar />
+    <div>
+      <Helmet>
+        <title>
+          {headerData.name}
+          {' '}
+          - Portfolio
+        </title>
+      </Helmet>
 
-    <About />
-    <Hero />
-    <Skills />
-    <Projects />
-    {/* <Testimonials /> */}
-    <Education />
-    <Achievements />
-    <Experience />
-    <Contact />
-    <Footer />
-  </div>
-);
+      <Navbar handleScroll={handleScroll} />
+      <About />
+      <Hero />
+      <div ref={skillsRef}>
+        <Skills />
+      </div>
+      <Projects />
+      {/* <Testimonials /> */}
+      <Education />
+      <Achievements />
+      <Experience />
+      <Contact />
+      <Footer />
+    </div>
+  );
+};
 
 export default Main;
