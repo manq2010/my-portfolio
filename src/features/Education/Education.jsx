@@ -1,12 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 import educationData from '../../data/educationData';
 
+const EducationWrapper = styled.section`
+margin-top: 2rem;
+`;
+
 const Education = () => (
-  <div id="education">
+  <EducationWrapper id="education">
     {
         educationData && (
         <div>
-          <h2>Education</h2>
+          <h1>Education</h1>
           <div className="education-data">
             {educationData.map((education) => (
               <div key={education.id}>
@@ -17,17 +22,20 @@ const Education = () => (
                   {' '}
                   -
                   {' '}
-                  {education.endYear}
+                  { education.endYear ? (
+                    <>
+                      {education.endYear}
+                    </>
+                  ) : ('Current')}
                 </div>
               </div>
             ))}
           </div>
         </div>
-
         )
 
       }
-  </div>
+  </EducationWrapper>
 );
 
 export default Education;

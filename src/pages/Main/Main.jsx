@@ -15,13 +15,63 @@ import Footer from '../../features/Footer/Footer';
 
 const Main = () => {
   const skillsRef = useRef();
-  const handleScroll = () => {
+  const aboutRef = useRef();
+  const projectRef = useRef();
+  const educationRef = useRef();
+  const achievementsRef = useRef();
+  const experienceRef = useRef();
+  const contactRef = useRef();
+
+  const handleSkillScroll = () => {
     window.scrollTo({
       top: skillsRef.current.offsetTop,
       left: 0,
       behavior: 'smooth',
     });
   };
+  const handleAboutScroll = () => {
+    window.scrollTo({
+      top: aboutRef.current.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+  const handleProjectScroll = () => {
+    window.scrollTo({
+      top: projectRef.current.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+  const handleEducationScroll = () => {
+    window.scrollTo({
+      top: educationRef.current.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+  const handleAchievementsScroll = () => {
+    window.scrollTo({
+      top: achievementsRef.current.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+  const handleExperienceScroll = () => {
+    window.scrollTo({
+      top: experienceRef.current.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+  const handleContactScroll = () => {
+    window.scrollTo({
+      top: contactRef.current.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
 
     <div>
@@ -33,18 +83,40 @@ const Main = () => {
         </title>
       </Helmet>
 
-      <Navbar handleScroll={handleScroll} />
-      <About />
+      <Navbar
+        handleSkillScroll={handleSkillScroll}
+        handleAboutScroll={handleAboutScroll}
+        handleProjectScroll={handleProjectScroll}
+        handleEducationScroll={handleEducationScroll}
+        handleAchievementsScroll={handleAchievementsScroll}
+        handleExperienceScroll={handleExperienceScroll}
+        handleContactScroll={handleContactScroll}
+      />
       <Hero />
+      <div ref={aboutRef}>
+        <About />
+      </div>
+      <div ref={experienceRef}>
+        <Experience />
+      </div>
+      <div ref={projectRef}>
+        <Projects />
+      </div>
       <div ref={skillsRef}>
         <Skills />
       </div>
-      <Projects />
+
       {/* <Testimonials /> */}
-      <Education />
-      <Achievements />
-      <Experience />
-      <Contact />
+
+      <div ref={educationRef}>
+        <Education />
+      </div>
+      <div ref={achievementsRef}>
+        <Achievements />
+      </div>
+      <div ref={contactRef}>
+        <Contact />
+      </div>
       <Footer />
     </div>
   );

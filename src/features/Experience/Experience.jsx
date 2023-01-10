@@ -5,10 +5,11 @@ import { experiencies } from '../../data/portfolio';
 import ExperienceItem from './ExperienceItem';
 
 const ExperienceSection = styled.section`
-
+margin-top: 2rem;
+// display: flex;
 `;
 
-const SectionTitle = styled.h2`
+const SectionTitle = styled.h1`
 
 `;
 
@@ -17,18 +18,18 @@ const ExperienceGrid = styled.div`
 `;
 
 const Experience = () => (
-  <div id="experience">
-    { experiencies && (
-    <ExperienceSection>
-      <SectionTitle>My Experience</SectionTitle>
+  <ExperienceSection>
+    <SectionTitle>Where I&apos;ve Worked</SectionTitle>
+    <div id="experience">
+      { experiencies && (
       <ExperienceGrid>
         {experiencies.map((experience) => (
           <ExperienceItem key={uuidv4()} experience={experience} />
         ))}
       </ExperienceGrid>
-    </ExperienceSection>
-    )}
-  </div>
+      )}
+    </div>
+  </ExperienceSection>
 );
 
 export default Experience;

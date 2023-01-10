@@ -1,12 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import achievementData from '../../data/achievementData';
 
+const AchievementsWrapper = styled.section`
+margin-top: 2rem;
+
+`;
+
 const Achievements = () => (
-  <div id="achievements">
+  <AchievementsWrapper id="achievements">
     {
         achievementData && (
         <div>
-          <h2>Achievements</h2>
+          <h1>Achievements</h1>
           <div className="-data">
             {achievementData.achievements.map((achievement) => (
               <div key={achievement.id}>
@@ -27,7 +33,7 @@ const Achievements = () => (
         )
     }
 
-  </div>
+  </AchievementsWrapper>
 );
 
 export default Achievements;

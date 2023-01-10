@@ -6,10 +6,12 @@ import skills from '../../data/skillsData';
 import skillsImage from '../../utils/skillsImage';
 
 const SkillsWrapper = styled.section`
+margin-top: 2rem;
 
 `;
 
 const SkillList = styled.ul`
+padding: 5rem;
 
 `;
 
@@ -17,24 +19,27 @@ const SkillItem = styled.div`
 
 `;
 
-const Skills = () => (
-  <SkillsWrapper id="skills">
-    <div>
-      <h2>Skills</h2>
-    </div>
-    <SkillList>
-      <Marquee
-        gradient={false}
-        speed={80}
-        pauseOnHover
-        pauseOnClick
-        delay={0}
-        play
-        direction="left"
-      >
-        {
-            skills && (
-              skills.map((skill) => (
+const Skills = () => {
+  const { stack1, stack2 } = skills;
+
+  return (
+    <SkillsWrapper id="skills">
+      <div>
+        <h2>Skills</h2>
+      </div>
+      <SkillList>
+        <Marquee
+          gradient={false}
+          speed={60}
+          pauseOnHover
+          pauseOnClick
+          delay={0}
+          play
+          direction="left"
+        >
+          {
+            stack1 && (
+              stack1.map((skill) => (
                 <SkillItem key={uuidv4()}>
                   <img src={skillsImage(skill)} alt={skill} style={{ height: '100px' }} />
                   <h4>
@@ -44,9 +49,32 @@ const Skills = () => (
               ))
             )
         }
-      </Marquee>
-    </SkillList>
-  </SkillsWrapper>
-);
+        </Marquee>
+        <Marquee
+          gradient={false}
+          speed={60}
+          pauseOnHover
+          pauseOnClick
+          delay={0}
+          play
+          direction="right"
+        >
+          {
+            stack2 && (
+              stack2.map((skill) => (
+                <SkillItem key={uuidv4()}>
+                  <img src={skillsImage(skill)} alt={skill} style={{ height: '100px' }} />
+                  <h4>
+                    {skill}
+                  </h4>
+                </SkillItem>
+              ))
+            )
+        }
+        </Marquee>
+      </SkillList>
+    </SkillsWrapper>
+  );
+};
 
 export default Skills;

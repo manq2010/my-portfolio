@@ -6,11 +6,19 @@ import { Link } from 'react-router-dom';
 import projects from '../../data/projectsData';
 import ProjectItem from './ProjectItem';
 
-const ProjectSectionWrapper = styled.section`
+const ProjectWrapper = styled.section`
+display: flex;
+flex-direction: column;
 
 `;
 
-const SectionTitle = styled.h2`
+const ProjectSectionWrapper = styled.div`
+display: flex;
+margin-top: 2rem;
+
+`;
+
+const SectionTitle = styled.h1`
   
 `;
 
@@ -18,33 +26,50 @@ const ProjectGrid = styled.div`
 
 `;
 
-const Projects = () => (
-  <section id="projects">
-    { projects.length && (
-      <ProjectSectionWrapper id="projects">
-        <SectionTitle>Projects</SectionTitle>
-        <ProjectGrid>
-          {projects.slice(0, 2).map((project) => (
-            <ProjectItem key={uuidv4()} project={project} />
-          ))}
-        </ProjectGrid>
+const Projects = () => {
+  // const projectRef = useRef();
 
+  const handleScroll = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <ProjectWrapper id="projects">
+      <SectionTitle>Some Things I&apos;ve Built</SectionTitle>
+      <div>
+        { projects.length && (
+        <ProjectSectionWrapper id="projects">
+          <ProjectGrid>
+            {projects.slice(0, 2).map((project) => (
+              <ProjectItem key={uuidv4()} project={project} />
+            ))}
+          </ProjectGrid>
+        </ProjectSectionWrapper>
+        )}
+      </div>
+      <div>
         {
-
-          projects.length > 2 && (
-            <div>
-              <Link to="/projects">
-                <button type="button">
-                  View All
-                  <ChevronRightIcon />
-                </button>
-              </Link>
-            </div>
-          )
-          }
-      </ProjectSectionWrapper>
-    )}
-  </section>
-);
+        projects.length > 2 && (
+          <div>
+            <Link to="/projects">
+              <button
+                type="button"
+                onClick={handleScroll}
+              >
+                View All
+                <ChevronRightIcon />
+              </button>
+            </Link>
+          </div>
+        )
+        }
+      </div>
+    </ProjectWrapper>
+  );
+};
 
 export default Projects;
