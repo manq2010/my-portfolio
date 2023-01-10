@@ -11,7 +11,7 @@ import headerData from '../../data/headerData';
 import Education from '../../features/Education/Education';
 import Achievements from '../../features/Achievements/Achievements';
 import Footer from '../../features/Footer/Footer';
-import Testimonials from '../../features/Testimonials/Testimonials';
+// import Testimonials from '../../features/Testimonials/Testimonials';
 
 const Main = () => (
   <div>
@@ -29,7 +29,7 @@ const Main = () => (
     <Hero />
     <Skills />
     <Projects />
-    <Testimonials />
+    {/* <Testimonials /> */}
     <Education />
     <Achievements />
     <Experience />
