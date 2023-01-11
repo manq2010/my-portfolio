@@ -2,7 +2,9 @@ const experienceData = [
   {
     id: 0,
     company: 'Globex Corporation',
+    url: 'https://www.microverse.org/',
     jobtitle: 'Frontend Developer',
+    range: 'July - December 2017',
     startYear: '2018',
     endYear: '2019',
     intro:
@@ -20,7 +22,9 @@ const experienceData = [
   {
     id: 1,
     company: 'Globex Corporation 2',
+    url: 'https://www.microverse.org/',
     jobtitle: 'Frontend Developer',
+    range: 'July - December 2017',
     startYear: '2018',
     endYear: '2019',
     intro:
@@ -33,8 +37,10 @@ const experienceData = [
   },
   {
     id: 2,
+    url: 'https://www.microverse.org/',
     company: 'Globex Corporation 3',
     jobtitle: 'Frontend Developer',
+    range: 'July - December 2017',
     startYear: '2018',
     endYear: '2019',
     intro:

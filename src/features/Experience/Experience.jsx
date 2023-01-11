@@ -1,12 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
+import keyCodes from '../../utils/keyCode';
+import sr from '../../utils/sr';
+import { srConfig } from '../../utils/config';
 import experienceData from '../../data/experienceData';
 // import ExperienceItem from './ExperienceItem';
 
 const ExperienceSection = styled.section`
 margin-top: 2rem;
 // display: flex;
+
+max-width: 700px;
+
+.inner {
+  display: flex;
+
+  @media (max-width: 600px) {
+    display: block;
+  }
+
+  // Prevent container from jumping
+  @media (min-width: 700px) {
+    min-height: 340px;
+  }
+}
 `;
 
 const ExperinceList = styled.div`
@@ -55,11 +74,11 @@ const StyledTabButton = styled.button`
 display: flex;
 align-items: center;
 width: 100%;
-height: var(--tab-height);
+height: 42px;
 padding: 0 20px 2px;
-border-left: 2px solid var(--lightest-navy);
+border-left: 2px solid #233554;
 background-color: transparent;
-color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--slate)')};
+color: ${({ isActive }) => (isActive ? '#64ffda' : '#8892b0')};
 font-family: var(--font-mono);
 font-size: var(--fz-xs);
 text-align: left;
@@ -73,22 +92,83 @@ white-space: nowrap;
   min-width: 120px;
   padding: 0 15px;
   border-left: 0;
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid #233554;
   text-align: center;
 }
 
 &:hover,
 &:focus {
-  background-color: green;
+  background-color: #112240;
 }
+`;
+
+const StyledHighlight = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 2px;
+  height: 42px;
+  border-radius: 4px;
+  background: #64ffda;
+  transform: translateY(calc(${({ activeTabId }) => activeTabId} * 42px ));
+  transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-delay: 0.1s;
+
+  @media (max-width: 600px) {
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    max-width: 42px;
+    height: 2px;
+    margin-left: 50px;
+    transform: translateX(calc(${({ activeTabId }) => activeTabId} * 120px));
+  }
+  @media (max-width: 480px) {
+    margin-left: 25px;
+  }
 `;
 
 const SectionTitle = styled.h1`
 
 `;
 
-const ExperienceGrid = styled.div`
+const StyledTabPanels = styled.div`
+position: relative;
+width: 100%;
+margin-left: 20px;
 
+@media (max-width: 600px) {
+  margin-left: 0;
+}
+`;
+
+const StyledTabPanel = styled.div`
+  width: 100%;
+  height: auto;
+  padding: 10px 5px;
+
+  ul {
+
+  }
+
+  h3 {
+    margin-bottom: 2px;
+    font-size: var(--fz-xxl);
+    font-weight: 500;
+    line-height: 1.3;
+
+    .company {
+      color: #64ffda;
+    }
+  }
+
+  .range {
+    margin-bottom: 25px;
+    color: #a8b2d1;
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
+  }
 `;
 
 const Experience = () => {
@@ -98,7 +178,7 @@ const Experience = () => {
   const revealContainer = useRef(null);
 
   useEffect(() => {
-
+    sr.reveal(revealContainer.current, srConfig());
   }, []);
 
   const focusTab = () => {
@@ -119,35 +199,86 @@ const Experience = () => {
   // Only re-run the effect if tabFocus changes
   useEffect(() => focusTab(), [tabFocus]);
 
+  // Focus on tabs when using up & down arrow keys
+  const onKeyDown = (e) => {
+    switch (e.key) {
+      case keyCodes.ARROW_UP: {
+        e.preventDefault();
+        setTabFocus(tabFocus - 1);
+        break;
+      }
+
+      case keyCodes.ARROW_DOWN: {
+        e.preventDefault();
+        setTabFocus(tabFocus + 1);
+        break;
+      }
+
+      default: {
+        break;
+      }
+    }
+  };
+
   return (
     <ExperienceSection id="jobs" ref={revealContainer}>
       <SectionTitle>Where I&apos;ve Worked</SectionTitle>
       <div id="experience" className="inner">
-        <ExperinceList>
-          { experienceData && (
-          <ExperienceGrid>
-            {experienceData.map((companyName) => (
-              // <ExperienceItem key={uuidv4()} experience={experience} />
-              <StyledTabButton
-                key={companyName.id}
-                isActive={activeTabId === companyName.id}
-                onClick={() => setActiveTabId(companyName.id)}
+        <ExperinceList
+          role="tablist"
+          aria-label="Job tabs"
+          onKeyDown={(e) => onKeyDown(e)}
+        >
+          { experienceData
+    && experienceData.map((companyName) => (
+      // <ExperienceItem key={uuidv4()} experience={experience} />
+      <StyledTabButton
+        key={companyName.id}
+        isActive={activeTabId === companyName.id}
+        onClick={() => setActiveTabId(companyName.id)}
                 // eslint-disable-next-line no-return-assign
-                ref={(el) => (tabs.current[companyName.id] = el)}
-                id={`tab-${companyName.id}`}
-                role="tab"
-                tabIndex={activeTabId === companyName.id ? '0' : '-1'}
-                aria-selected={activeTabId === companyName.id}
-                aria-controls={`panel-${companyName.id}`}
-              >
-                <span>{companyName.company}</span>
-              </StyledTabButton>
-
-            ))}
-          </ExperienceGrid>
-          )}
-
+        ref={(el) => (tabs.current[companyName.id] = el)}
+        id={`tab-${companyName.id}`}
+        role="tab"
+        tabIndex={activeTabId === companyName.id ? '0' : '-1'}
+        aria-selected={activeTabId === companyName.id}
+        aria-controls={`panel-${companyName.id}`}
+      >
+        <span>{companyName.company}</span>
+      </StyledTabButton>
+    ))}
+          <StyledHighlight activeTabId={activeTabId} />
         </ExperinceList>
+        <StyledTabPanels>
+          {experienceData
+          && experienceData.map((experience) => (
+            <CSSTransition key={experience.id} in={activeTabId === experience.id} timeout={250} classNames="fade">
+              <StyledTabPanel
+                id={`panel-${experience.id}`}
+                role="tabpanel"
+                tabIndex={activeTabId === experience.id ? '0' : '-1'}
+                aria-labelledby={`tab-${experience.id}`}
+                aria-hidden={activeTabId !== experience.id}
+                hidden={activeTabId !== experience.id}
+              >
+                <h3>
+                  <span>{experience.jobtitle}</span>
+                  <span className="company">
+                  &nbsp;@&nbsp;
+                    <a href={experience.url} className="inline-link">
+                      {experience.company}
+                    </a>
+                  </span>
+                </h3>
+                <p className="range">{experience.range}</p>
+
+                <div>
+                  {experience.points}
+                </div>
+              </StyledTabPanel>
+            </CSSTransition>
+          ))}
+        </StyledTabPanels>
       </div>
     </ExperienceSection>
   );
