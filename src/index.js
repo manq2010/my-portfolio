@@ -4,11 +4,13 @@ import './index.css';
 import { ThemeProvider } from './contexts/theme';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import GlobalStyle from './styles/GlobalStyle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
+      {/* <GlobalStyle /> */}
       <App />
     </ThemeProvider>
   </React.StrictMode>,

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
 import Navbar from '../../features/Navbar/Navbar';
 import About from '../../features/About/About';
 import Hero from '../../features/Hero/Hero';
@@ -12,6 +13,12 @@ import Education from '../../features/Education/Education';
 import Achievements from '../../features/Achievements/Achievements';
 import Footer from '../../features/Footer/Footer';
 // import Testimonials from '../../features/Testimonials/Testimonials';
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 const Main = () => {
   const skillsRef = useRef();
@@ -74,7 +81,7 @@ const Main = () => {
 
   return (
 
-    <div>
+    <MainContainer>
       <Helmet>
         <title>
           {headerData.name}
@@ -118,7 +125,7 @@ const Main = () => {
         <Contact />
       </div>
       <Footer />
-    </div>
+    </MainContainer>
   );
 };
 

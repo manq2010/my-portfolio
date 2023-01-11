@@ -10,7 +10,10 @@ import projectsData from '../../data/projectsData';
 import headerData from '../../data/headerData';
 import Navbar from '../../features/Navbar/Navbar';
 
-const ProjectWrapper = styled.div`
+const ProjectContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
 const ProjectItems = styled.section`
@@ -26,7 +29,7 @@ const ProjectPage = () => {
   });
 
   return (
-    <ProjectWrapper>
+    <ProjectContainer>
       <Helmet>
         <title>
           {headerData.name}
@@ -55,7 +58,7 @@ const ProjectPage = () => {
           </div>
         </div>
       </ProjectItems>
-    </ProjectWrapper>
+    </ProjectContainer>
   );
 };
 
