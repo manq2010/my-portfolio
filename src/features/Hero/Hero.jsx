@@ -6,47 +6,55 @@ import headerData from '../../data/headerData';
 // import { navDelay, loaderDelay } from '../../utils/delays';
 
 const HeroWrapper = styled.div`
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 100vh;
-  height: 100vh;
-  padding: 0;
+${({ theme }) => theme.mixins.flexCenter};
+flex-direction: column;
+align-items: flex-start;
+min-height: 100vh;
+height: 100vh;
+padding: 0;
 
-  @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
-    height: auto;
-    padding-top: var(--nav-height);
+@media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
+  height: auto;
+  padding-top: var(--nav-height);
+}
+
+h1 {
+  margin: 0 0 30px 4px;
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
+  font-weight: 400;
+
+  @media (max-width: 480px) {
+    margin: 0 0 20px 2px;
   }
+}
 
-  h1 {
-    margin: 0 0 30px 4px;
-    color: var(--green);
-    font-family: var(--font-mono);
-    font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
-    font-weight: 400;
+h3 {
+  margin-top: 5px;
+  color: var(--slate);
+  line-height: 1.2 ;
+}
 
-    @media (max-width: 480px) {
-      margin: 0 0 20px 2px;
-    }
-  }
-
-  h3 {
-    margin-top: 5px;
-    color: var(--slate);
-    line-height: 0.9;
-  }
-
-  p {
-    margin: 20px 0 0;
-    max-width: 540px;
-  }
+p {
+  // margin: 30px 0 0;
+  max-width: 540px;
+}
 
   .linkedin-link {
-    margin-top: 50px;
+    ${({ theme }) => theme.mixins.bigButton};
+    margin-top: 30px;
   }
 
   .resume-link {
-    // margin-top: 50px;
-    margin-top: 70px;
+    ${({ theme }) => theme.mixins.bigButton2};
+    margin-top: 30px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
   }
 `;
 
@@ -69,41 +77,39 @@ const Hero = () => {
   const two = <h2 className="big-heading">{name}</h2>;
   const three = <h3 className="big-heading">{title}</h3>;
   const four = (
-    <>
-      <p>
-        {description}
-      </p>
-    </>
+    <p>
+      {description}
+    </p>
   );
   const five = (
-    <a
-      className="linkedin-link"
-      href={linkedIn}
-      download="resume"
-      target="_blank"
-      rel="noreferrer"
-    >
-      <button type="button">
-        Connect with me
-      </button>
-    </a>
+    <div className="buttons">
+      <a
+        className="linkedin-link"
+        href={linkedIn}
+        download="resume"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <button type="button">
+          Connect with me
+        </button>
+      </a>
+      <a
+        className="resume-link"
+        href={resumePdf}
+        download="resume"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <button type="button">
+          Download CV
+        </button>
+      </a>
+    </div>
+
   );
 
-  const six = (
-    <a
-      className="resume-link"
-      href={resumePdf}
-      download="resume"
-      target="_blank"
-      rel="noreferrer"
-    >
-      <button type="button">
-        Download CV
-      </button>
-    </a>
-  );
-
-  const items = [one, two, three, four, five, six];
+  const items = [one, two, three, four, five];
 
   return (
     <HeroWrapper id="home">

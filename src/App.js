@@ -1,20 +1,17 @@
-import { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ThemeContext } from './contexts/theme';
 import './App.css';
 
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle, theme } from './styles';
 import Main from './pages/Main/Main';
 import ProjectPage from './pages/Project/ProjectPage';
 import ScrollToTop from './features/ScrollToTop/ScrollToTop';
 import Resume from './features/Resume/Resume';
-import GlobalStyle from './styles/GlobalStyle';
 
-const App = () => {
-  const [{ themeName }] = useContext(ThemeContext);
-  return (
-    <div id="top" className={`${themeName} app`}>
+const App = () => (
+  <div id="top">
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
-
       <Router>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -23,8 +20,8 @@ const App = () => {
         </Routes>
         <ScrollToTop />
       </Router>
-    </div>
-  );
-};
+    </ThemeProvider>
+  </div>
+);
 
 export default App;

@@ -133,6 +133,31 @@ const mixins = {
     }
   `,
 
+  bigButton2: css`
+  color: var(--navy);
+  background-color:  var(--green) ;
+  border: 1px solid var(--navy);
+  border-radius: var(--border-radius);
+  padding: 1.25rem 1.75rem;
+  font-size: var(--fz-sm);
+  font-family: var(--font-mono);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--lightest-navy);
+    // outline: none;
+    border: 1px solid var(--slate);
+    color: var(--slate)
+  }
+  &:after {
+    display: none !important;
+  }
+`,
+
   boxShadow: css`
     box-shadow: 0 10px 30px -15px var(--navy-shadow);
     transition: var(--transition);

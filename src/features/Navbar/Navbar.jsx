@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
-import Brightness2Icon from '@mui/icons-material/Brightness2';
-import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
+// import Brightness2Icon from '@mui/icons-material/Brightness2';
+// import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import headerData from '../../data/headerData';
 import projectsData from '../../data/projectsData';
 import skillsData from '../../data/skillsData';
 import educationData from '../../data/educationData';
-import { ThemeContext } from '../../contexts/theme';
+// import { ThemeContext } from '../../contexts/theme';
 import achievementData from '../../data/achievementData';
 
 const NavWrapper = styled.div`
@@ -44,16 +44,10 @@ margin: 0 5px;
 }
 `;
 
-const NavThemeButton = styled.button`
- 
-`;
-
 const Navbar = ({
   handleSkillScroll, handleAboutScroll, handleProjectScroll, handleEducationScroll,
   handleAchievementsScroll, handleExperienceScroll, handleContactScroll,
 }) => {
-  const [{ themeName, toggleTheme }] = useContext(ThemeContext);
-
   const shortname = (name) => {
     if (name.length > 12) {
       return name.split(' ')[0];
@@ -149,14 +143,6 @@ const Navbar = ({
                   Contacts
                 </NavLink>
               </NavItem>
-
-              <NavThemeButton
-                type="button"
-                onClick={toggleTheme}
-                aria-label="toggle theme"
-              >
-                {themeName === 'dark' ? <WbSunnyRoundedIcon /> : <Brightness2Icon />}
-              </NavThemeButton>
             </div>
           </NavMenu>
         </NavMenuItems>
