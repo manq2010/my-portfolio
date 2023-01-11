@@ -5,13 +5,8 @@ import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 // import Brightness2Icon from '@mui/icons-material/Brightness2';
 // import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
-import headerData from '../../data/headerData';
 import IconLogo from '../Logo/IconLogo';
-import projectsData from '../../data/projectsData';
-import skillsData from '../../data/skillsData';
-import educationData from '../../data/educationData';
-// import { ThemeContext } from '../../contexts/theme';
-import achievementData from '../../data/achievementData';
+
 // import { loaderDelay } from '../Hero/Hero';
 
 const Header = styled.header`
@@ -112,23 +107,6 @@ ol {
 }
 `;
 
-const NavItems = styled.div`
-
-`;
-
-const NavMenuItems = styled.div`
-
-`;
-
-const NavMenu = styled.ul`
-
-
-`;
-
-const NavItem = styled.li`
-
-`;
-
 const Navbar = ({
   handleSkillScroll, handleAboutScroll, handleProjectScroll, handleEducationScroll,
   handleAchievementsScroll, handleExperienceScroll, handleContactScroll,
@@ -153,12 +131,12 @@ const Navbar = ({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  const shortname = (name) => {
-    if (name.length > 12) {
-      return name.split(' ')[0];
-    }
-    return name;
-  };
+  // const shortname = (name) => {
+  //   if (name.length > 12) {
+  //     return name.split(' ')[0];
+  //   }
+  //   return name;
+  // };
 
   // const timeout = loaderDelay;
 
@@ -197,108 +175,68 @@ const Navbar = ({
           <ol>
             <TransitionGroup component={null}>
               <CSSTransition classNames="fadedown" timeout={timeout}>
-                <li style={{ transitionDelay: '1000ms' }}>
-                  <NavLink
-                    to="/"
-                    onClick={handleAboutScroll}
-                  >
-                    About
-                  </NavLink>
-                </li>
-              </CSSTransition>
-            </TransitionGroup>
-          </ol>
-        </NavLinks>
-        <NavItems>
-          <NavMenuItems>
-            <NavMenu>
-              <div className="logo">
-                <NavLink
-                  to="/"
-                  href=""
-                >
-                  <h1>
-                    {shortname(headerData.name)}
-                  </h1>
-                </NavLink>
-              </div>
-              <div className="items">
-                <NavItem>
-                  <NavLink
-                    to="/"
-                    onClick={handleAboutScroll}
-                  >
-                    About
-                  </NavLink>
-                </NavItem>
-
-                { educationData.length ? (
-                  <NavItem>
+                <>
+                  <li style={{ transitionDelay: '0ms' }}>
+                    <NavLink
+                      to="/"
+                      onClick={handleAboutScroll}
+                    >
+                      About
+                    </NavLink>
+                  </li>
+                  <li style={{ transitionDelay: '100ms' }}>
                     <NavLink
                       to="/"
                       onClick={handleExperienceScroll}
                     >
                       Experience
                     </NavLink>
-                  </NavItem>
-                ) : null }
-
-                { projectsData.length ? (
-                  <NavItem>
+                  </li>
+                  <li style={{ transitionDelay: '200ms' }}>
                     <NavLink
                       to="/"
                       onClick={handleProjectScroll}
                     >
                       Work
                     </NavLink>
-                  </NavItem>
-                ) : null }
-
-                { skillsData.stack1.length ? (
-                  <NavItem>
+                  </li>
+                  <li style={{ transitionDelay: '300ms' }}>
                     <NavLink
                       to="/"
                       onClick={handleSkillScroll}
                     >
                       Skills
                     </NavLink>
-                  </NavItem>
-                ) : null }
-
-                { educationData.length ? (
-                  <NavItem>
+                  </li>
+                  <li style={{ transitionDelay: '400ms' }}>
                     <NavLink
                       to="/"
                       onClick={handleEducationScroll}
                     >
                       Education
                     </NavLink>
-                  </NavItem>
-                ) : null }
-
-                { achievementData.achievements.length ? (
-                  <NavItem>
+                  </li>
+                  <li style={{ transitionDelay: '500ms' }}>
                     <NavLink
                       to="/"
                       onClick={handleAchievementsScroll}
                     >
                       Achievements
                     </NavLink>
-                  </NavItem>
-                ) : null }
-
-                <NavItem>
-                  <NavLink
-                    to="/"
-                    onClick={handleContactScroll}
-                  >
-                    Contacts
-                  </NavLink>
-                </NavItem>
-              </div>
-            </NavMenu>
-          </NavMenuItems>
-        </NavItems>
+                  </li>
+                  <li style={{ transitionDelay: '500ms' }}>
+                    <NavLink
+                      to="/"
+                      onClick={handleContactScroll}
+                    >
+                      Contacts
+                    </NavLink>
+                  </li>
+                </>
+              </CSSTransition>
+            </TransitionGroup>
+          </ol>
+        </NavLinks>
       </NavWrapper>
     </Header>
   );
