@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { PropTypes } from 'prop-types';
@@ -12,8 +12,7 @@ import skillsData from '../../data/skillsData';
 import educationData from '../../data/educationData';
 // import { ThemeContext } from '../../contexts/theme';
 import achievementData from '../../data/achievementData';
-import links from '../../data/navlinksData';
-import { loaderDelay } from '../Hero/Hero';
+// import { loaderDelay } from '../Hero/Hero';
 
 const Header = styled.header`
 ${({ theme }) => theme.mixins.flexBetween};
@@ -134,6 +133,26 @@ const Navbar = ({
   handleSkillScroll, handleAboutScroll, handleProjectScroll, handleEducationScroll,
   handleAchievementsScroll, handleExperienceScroll, handleContactScroll,
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  const [scrolledToTop, setScrolledToTop] = useState(true);
+  const timeout = 2000;
+
+  const handleScroll = () => {
+    setScrolledToTop(window.pageYOffset < 50);
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsMounted(true);
+    }, 100);
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   const shortname = (name) => {
     if (name.length > 12) {
       return name.split(' ')[0];
@@ -141,7 +160,7 @@ const Navbar = ({
     return name;
   };
 
-  const timeout = loaderDelay;
+  // const timeout = loaderDelay;
 
   const Logo = (
     <div className="logo" tabIndex="-1">
@@ -162,37 +181,34 @@ const Navbar = ({
   // );
 
   return (
-    <Header>
+    <Header scrolledToTop={scrolledToTop}>
       <NavWrapper>
 
         <TransitionGroup component={null}>
+          {isMounted
+          && (
           <CSSTransition classNames="fade" timeout={timeout}>
             <>{Logo}</>
           </CSSTransition>
+          )}
         </TransitionGroup>
 
         <NavLinks>
           <ol>
             <TransitionGroup component={null}>
-              {links
-                    && links.map(({
-                      url, name, scroll, id,
-                    }) => (
-                      <CSSTransition key={id} classNames="fadedown" timeout={timeout}>
-                        <li key={id} style={{ transitionDelay: `${id * 100}ms` }}>
-                          <NavLink
-                            to={url}
-                            onClick={scroll}
-                          >
-                            {name}
-                          </NavLink>
-                        </li>
-                      </CSSTransition>
-                    ))}
+              <CSSTransition classNames="fadedown" timeout={timeout}>
+                <li style={{ transitionDelay: '1000ms' }}>
+                  <NavLink
+                    to="/"
+                    onClick={handleAboutScroll}
+                  >
+                    About
+                  </NavLink>
+                </li>
+              </CSSTransition>
             </TransitionGroup>
           </ol>
         </NavLinks>
-
         <NavItems>
           <NavMenuItems>
             <NavMenu>
