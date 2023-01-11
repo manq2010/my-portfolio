@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 // import Brightness2Icon from '@mui/icons-material/Brightness2';
 // import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import IconLogo from '../Logo/IconLogo';
+import links from '../../data/navlinksData';
 
 // import { loaderDelay } from '../Hero/Hero';
 
@@ -111,13 +112,25 @@ const Navbar = ({
   handleSkillScroll, handleAboutScroll, handleProjectScroll, handleEducationScroll,
   handleAchievementsScroll, handleExperienceScroll, handleContactScroll,
 }) => {
+  const isHome = true;
   const [isMounted, setIsMounted] = useState(false);
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const timeout = 2000;
+  const fadeDownClass = isHome ? 'fadedown' : '';
 
   const handleScroll = () => {
     setScrolledToTop(window.pageYOffset < 50);
   };
+
+  const items = [
+    handleAboutScroll,
+    handleExperienceScroll,
+    handleProjectScroll,
+    handleSkillScroll,
+    handleAchievementsScroll,
+    handleEducationScroll,
+    handleContactScroll,
+  ];
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -142,21 +155,23 @@ const Navbar = ({
 
   const Logo = (
     <div className="logo" tabIndex="-1">
-      <a href="/" aria-label="home">
-        <IconLogo />
-      </a>
-
-      {/* <Link to="/" aria-label="home">
-              <IconLogo />
-            </Link> */}
+      {isHome ? (
+        <a href="/" aria-label="home">
+          <IconLogo />
+        </a>
+      ) : (
+        <Link to="/" aria-label="home">
+          <IconLogo />
+        </Link>
+      )}
     </div>
   );
 
-  // const ResumeLink = (
-  //   <a className="resume-button" href="/resume" target="_blank" rel="noopener noreferrer">
-  //     Resume
-  //   </a>
-  // );
+  const ResumeLink = (
+    <a className="resume-button" href="/resume" target="_blank" rel="noopener noreferrer">
+      Resume
+    </a>
+  );
 
   return (
     <Header scrolledToTop={scrolledToTop}>
@@ -174,68 +189,26 @@ const Navbar = ({
         <NavLinks>
           <ol>
             <TransitionGroup component={null}>
-              <CSSTransition classNames="fadedown" timeout={timeout}>
-                <>
-                  <li style={{ transitionDelay: '0ms' }}>
-                    <NavLink
-                      to="/"
-                      onClick={handleAboutScroll}
-                    >
-                      About
-                    </NavLink>
-                  </li>
-                  <li style={{ transitionDelay: '100ms' }}>
-                    <NavLink
-                      to="/"
-                      onClick={handleExperienceScroll}
-                    >
-                      Experience
-                    </NavLink>
-                  </li>
-                  <li style={{ transitionDelay: '200ms' }}>
-                    <NavLink
-                      to="/"
-                      onClick={handleProjectScroll}
-                    >
-                      Work
-                    </NavLink>
-                  </li>
-                  <li style={{ transitionDelay: '300ms' }}>
-                    <NavLink
-                      to="/"
-                      onClick={handleSkillScroll}
-                    >
-                      Skills
-                    </NavLink>
-                  </li>
-                  <li style={{ transitionDelay: '400ms' }}>
-                    <NavLink
-                      to="/"
-                      onClick={handleEducationScroll}
-                    >
-                      Education
-                    </NavLink>
-                  </li>
-                  <li style={{ transitionDelay: '500ms' }}>
-                    <NavLink
-                      to="/"
-                      onClick={handleAchievementsScroll}
-                    >
-                      Achievements
-                    </NavLink>
-                  </li>
-                  <li style={{ transitionDelay: '500ms' }}>
-                    <NavLink
-                      to="/"
-                      onClick={handleContactScroll}
-                    >
-                      Contacts
-                    </NavLink>
-                  </li>
-                </>
-              </CSSTransition>
+              {isMounted
+                    && links
+                    && links.map(({ url, name, id }) => (
+                      <CSSTransition key={id} classNames={fadeDownClass} timeout={timeout}>
+                        <li key={IDBCursorWithValue} style={{ transitionDelay: `${isHome ? id * 100 : 0}ms` }}>
+                          <Link to={url} onClick={items[id - 1]}>{name}</Link>
+                        </li>
+                      </CSSTransition>
+                    ))}
             </TransitionGroup>
           </ol>
+          <TransitionGroup component={null}>
+            {isMounted && (
+            <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+              <div style={{ transitionDelay: `${isHome ? links.length * 100 : 0}ms` }}>
+                {ResumeLink}
+              </div>
+            </CSSTransition>
+            )}
+          </TransitionGroup>
         </NavLinks>
       </NavWrapper>
     </Header>
