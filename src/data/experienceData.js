@@ -1,8 +1,10 @@
 const experienceData = [
   {
-    id: 1,
+    id: 0,
     company: 'Globex Corporation',
+    url: 'https://www.microverse.org/',
     jobtitle: 'Frontend Developer',
+    range: 'July - December 2017',
     startYear: '2018',
     endYear: '2019',
     intro:
@@ -17,7 +19,36 @@ const experienceData = [
       'Delivered an overall fast, yet accessible and silky smooth user experience in the app.',
     ],
   },
-
+  {
+    id: 1,
+    company: 'Globex Corporation 2',
+    url: 'https://www.microverse.org/',
+    jobtitle: 'Frontend Developer',
+    range: 'July - December 2017',
+    startYear: '2018',
+    endYear: '2019',
+    intro:
+        'I worked on a couple of projects for organizations and individuals as a frontend engineering contractor.',
+    points: [
+      'Crafted a scalable component library that enforced accessibility and fluency across the application.',
+      'Built a multi-role user authentication system from the ground up with JavaScript.',
+      'Implemented a client-side localization system for the entire app.',
+    ],
+  },
+  {
+    id: 2,
+    url: 'https://www.microverse.org/',
+    company: 'Globex Corporation 3',
+    jobtitle: 'Frontend Developer',
+    range: 'July - December 2017',
+    startYear: '2018',
+    endYear: '2019',
+    intro:
+        'I worked on a couple of projects for organizations and individuals as a frontend engineering contractor.',
+    points: [
+      'Crafted a scalable component library that enforced accessibility and fluency across the application.',
+    ],
+  },
 ];
 
 export default experienceData;

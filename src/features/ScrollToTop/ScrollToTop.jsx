@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 
-function ScrollToTop() {
+const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 300) {
+    if (scrolled > 500) {
       setVisible(true);
-    } else if (scrolled <= 300) {
+    } else if (scrolled <= 500) {
       setVisible(false);
     }
   };
@@ -22,29 +22,35 @@ function ScrollToTop() {
 
   window.addEventListener('scroll', toggleVisible);
 
-  // const useStyles = makeStyles(() => ({
-  //   icon: {
-  //     fontSize: '3rem',
-  //     color: theme.tertiary,
-  //   },
-  // }));
-
-  // const classes = useStyles();
-
   return (
     <div
-      style={{ display: visible ? 'inline' : 'none' }}
-      className="backToTop"
+      className="test-container"
+      style={{
+        display: visible ? 'inline' : 'none',
+        position: 'fixed',
+        right: '1rem',
+        bottom: '3.5rem',
+        height: '3rem',
+        zIndex: '10',
+      }}
     >
       <button
+        data-testid="scroll"
+        className="btn-scroll"
+        style={{
+          outline: 'none',
+          border: 'none',
+          background: 'none',
+          cursor: 'pointer',
+        }}
         type="button"
         onClick={backToTop}
         aria-label="Back to top"
       >
-        <ArrowUpwardIcon style={{ fontSize: '3rem' }} />
+        <ArrowCircleUpIcon style={{ fontSize: '2.5rem' }} />
       </button>
     </div>
   );
-}
+};
 
 export default ScrollToTop;

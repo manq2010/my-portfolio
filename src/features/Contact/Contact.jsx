@@ -8,30 +8,16 @@ import contactsData from '../../data/contactsData';
 import socialsData from '../../data/socialsData';
 
 const ContactWrapper = styled.section`
-    display: flex;
-    flex-direction: column;
 `;
 
 const Contact = () => (
-  <div>
+  <div id="contacts">
+    <h1>Get In Touch</h1>
     {
       contactsData && (
       <ContactWrapper>
-        <h1>Contacts</h1>
-        {/* <h3>Want me to build staff for you? Hit me on LinkedIn</h3> */}
-        {/* <a href={`mailto:${contact.email}`} target="_blank" rel="noreferrer">
-          <span type="button">
-            <EmailIcon />
-          </span>
-        </a> */}
 
         <div>
-          {/* <a href={contactsData.linkedin} target="_blank" rel="noreferrer">
-          <span type="button">
-            <LinkedInIcon />
-          </span>
-        </a> */}
-
           {socialsData.twitter && (
           <a
             href={socialsData.twitter}

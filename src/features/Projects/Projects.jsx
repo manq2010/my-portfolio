@@ -6,51 +6,70 @@ import { Link } from 'react-router-dom';
 import projects from '../../data/projectsData';
 import ProjectItem from './ProjectItem';
 
-const ProjectSectionWrapper = styled.section`
-    margin-top: 5tem;
+const ProjectWrapper = styled.section`
+display: flex;
+flex-direction: column;
+
 `;
 
-const SectionTitle = styled.h2`
-    text-align: center;
-    margin-bottom: 1rem;
-    ;text-transform: uppercase;
+const ProjectSectionWrapper = styled.div`
+display: flex;
+margin-top: 2rem;
+
+`;
+
+const SectionTitle = styled.h1`
+  
 `;
 
 const ProjectGrid = styled.div`
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-    grid-gap: 2rem;
+
 `;
 
-const Projects = () => (
-  <>
-    { projects.length && (
-      <ProjectSectionWrapper id="projects">
-        <SectionTitle>Projects</SectionTitle>
-        <ProjectGrid>
-          {projects.slice(0, 2).map((project) => (
-            <ProjectItem key={uuidv4()} project={project} />
-          ))}
-        </ProjectGrid>
+const Projects = () => {
+  // const projectRef = useRef();
 
+  const handleScroll = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <ProjectWrapper id="projects">
+      <SectionTitle>Some Things I&apos;ve Built</SectionTitle>
+      <div>
+        { projects.length && (
+        <ProjectSectionWrapper id="projects">
+          <ProjectGrid>
+            {projects.slice(0, 2).map((project) => (
+              <ProjectItem key={uuidv4()} project={project} />
+            ))}
+          </ProjectGrid>
+        </ProjectSectionWrapper>
+        )}
+      </div>
+      <div>
         {
-
-          projects.length > 2 && (
-            <div>
-              <Link to="/projects">
-                <button type="button">
-                  View All
-                  <ChevronRightIcon />
-                </button>
-              </Link>
-            </div>
-          )
-          }
-      </ProjectSectionWrapper>
-    )}
-  </>
-);
+        projects.length > 2 && (
+          <div>
+            <Link to="/projects">
+              <button
+                type="button"
+                onClick={handleScroll}
+              >
+                View All
+                <ChevronRightIcon />
+              </button>
+            </Link>
+          </div>
+        )
+        }
+      </div>
+    </ProjectWrapper>
+  );
+};
 
 export default Projects;

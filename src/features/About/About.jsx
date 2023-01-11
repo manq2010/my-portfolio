@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+// import { makeStyles } from '@mui/core/styles';
+// import { Button } from '@mui/core';
+
 import about from '../../data/aboutData';
 
 // const Button = styled.button`
@@ -29,7 +32,7 @@ import about from '../../data/aboutData';
 //         transition: right 0.2s ease-in-out;
 //       }
 
-//       &:hover::before,,
+//       &:hover::before,
 //       &:focus::before, {
 //           color: #23283e;
 //       }
@@ -37,59 +40,50 @@ import about from '../../data/aboutData';
 // `;
 
 const AboutWrapper = styled.section`
+display: flex;
+flex-direction: column;
+gap: 1rem;
+
+`;
+
+const AboutItems = styled.div`
+display: flex;
+flex-direction: column;
 
 `;
 
 const About = () => {
   const {
-    title, description,
+    description1, description2, description3, image, stack,
   } = about;
   return (
     <AboutWrapper id="about">
-      { title && (
+      <h1>About Me</h1>
+      <AboutItems>
         <div>
-          <h3>
-            HI, MY NAME IS
-          </h3>
-          <h1>
-            {title}
-            .
-          </h1>
+          <div>
+            <p>{description1}</p>
+            <br />
+            <p>{description2}</p>
+            <br />
+            <p>{description3}</p>
+          </div>
 
+          <div>
+            {stack}
+          </div>
         </div>
 
-      )}
-      { description && (
         <div>
-          <h1>
-            I am a
-            {' '}
-            {description}
-            .
-          </h1>
+          <img
+            src={image}
+            alt=""
+            className="landing--img"
+            style={{ width: '300px' }}
+          />
+
         </div>
-
-      )}
-
-      { description && (
-        <div>
-          <h3>
-            {description}
-          </h3>
-        </div>
-      )}
-
-      {/* { button && (
-      <Button type="button">
-        <a
-          href={about.social.linkedin}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {button}
-        </a>
-      </Button>
-      )} */}
+      </AboutItems>
     </AboutWrapper>
   );
 };

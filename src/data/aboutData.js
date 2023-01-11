@@ -1,8 +1,14 @@
 const aboutData = {
-  title: 'Who I am',
-  description1: "Hello! My name is Sreerag Rajan. I'm an aspiring web developer based in India.",
-  description2: 'I am a student at Masai School, currently learning Fullstack Web-Development. A project that I worked on towards the end of my MasterU+2019s in History set me on this path of a web developer. The project involved looking at movies on historical themes that could be considered as an educational tool. The website was not the focus of the project, but working on it was such a thrilling experience that a career in this felt like a right fit. Other than this I am a bibliophile, who not just loves reading books but also buying and maintaining a personal library.',
-  image: 2,
+  description1: '💻 My name is Mancoba, I’m a software engineer currently pursuing coursework at Microverse, a remote software development program that uses pair programming and project building to teach development.',
+  description2: 'For four years, I was an IT Business Services Specialist. Each day, I worked with vendors from different cultures. So even before I started studying as a developer, I was already good at communication and a pro at working under immense pressure which is some of the skills needed to thrive in software development.',
+  description3: 'I have spent the last couple of months building websites such as landing pages, conference pages, SPAs, and a Rails API. I also learned how to work collaboratively with my peers and I know how to work on tight deadlines because I submitted projects every week and ensure I do not exceed the deadline. Also, I know how to learn new languages quickly!',
+  image: 'https://avatars.githubusercontent.com/u/53082877?s=600&u=8432a4860f75013af57e50bbbd974a89e51e94c9&v=4',
+  stack: [
+    'Javascript (ES6+)',
+    'React',
+    'Ruby on Rails',
+    'Ruby',
+  ],
 };
 
 export default aboutData;
