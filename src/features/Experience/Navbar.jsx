@@ -12,7 +12,6 @@ import skillsData from '../../data/skillsData';
 import educationData from '../../data/educationData';
 // import { ThemeContext } from '../../contexts/theme';
 import achievementData from '../../data/achievementData';
-import links from '../../data/navlinksData';
 import { loaderDelay } from '../Hero/Hero';
 
 const Header = styled.header`
@@ -155,11 +154,11 @@ const Navbar = ({
     </div>
   );
 
-  // const ResumeLink = (
-  //   <a className="resume-button" href="/resume" target="_blank" rel="noopener noreferrer">
-  //     Resume
-  //   </a>
-  // );
+  const ResumeLink = (
+    <a className="resume-button" href="/resume" target="_blank" rel="noopener noreferrer">
+      Resume
+    </a>
+  );
 
   return (
     <Header>
@@ -174,18 +173,12 @@ const Navbar = ({
         <NavLinks>
           <ol>
             <TransitionGroup component={null}>
-              {links
-                    && links.map(({
-                      url, name, scroll, id,
-                    }) => (
-                      <CSSTransition key={id} classNames="fadedown" timeout={timeout}>
-                        <li key={id} style={{ transitionDelay: `${id * 100}ms` }}>
-                          <NavLink
-                            to={url}
-                            onClick={scroll}
-                          >
-                            {name}
-                          </NavLink>
+              {isMounted
+                    && navLinks
+                    && navLinks.map(({ url, name }, i) => (
+                      <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
+                        <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                          <Link to={url}>{name}</Link>
                         </li>
                       </CSSTransition>
                     ))}
