@@ -17,24 +17,8 @@ const links = [
   {
     id: 4,
     url: '/',
-    name: 'Skills',
-  },
-  {
-    id: 5,
-    url: '/',
-    name: 'Achievement',
-  },
-  {
-    id: 6,
-    url: '/',
-    name: 'Education',
-  },
-  {
-    id: 7,
-    url: '/',
     name: 'Contact',
   },
-
 ];
 
 export default links;

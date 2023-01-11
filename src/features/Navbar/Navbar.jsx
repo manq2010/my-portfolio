@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
-// import Brightness2Icon from '@mui/icons-material/Brightness2';
-// import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import IconLogo from '../Logo/IconLogo';
 import links from '../../data/navlinksData';
-
-// import { loaderDelay } from '../Hero/Hero';
+import MenuToggle from '../Menu/MenuToggle';
 
 const Header = styled.header`
 ${({ theme }) => theme.mixins.flexBetween};
@@ -23,7 +20,8 @@ ${({ theme }) => theme.mixins.flexBetween};
   pointer-events: auto !important;
   user-select: auto !important;
   backdrop-filter: blimport IconLogo from '../Logo/IconLogo';
-ur(10px);
+  ur(10px);import MenuToggle from '../Menu/MenuToggle';
+
   transition: var(--transition);
 
   @media (max-width: 1080px) {
@@ -117,6 +115,7 @@ const Navbar = ({
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const timeout = 2000;
   const fadeDownClass = isHome ? 'fadedown' : '';
+  const fadeClass = isHome ? 'fade' : '';
 
   const handleScroll = () => {
     setScrolledToTop(window.pageYOffset < 50);
@@ -126,10 +125,10 @@ const Navbar = ({
     handleAboutScroll,
     handleExperienceScroll,
     handleProjectScroll,
+    handleContactScroll,
     handleSkillScroll,
     handleAchievementsScroll,
     handleEducationScroll,
-    handleContactScroll,
   ];
 
   useEffect(() => {
@@ -144,14 +143,6 @@ const Navbar = ({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  // const shortname = (name) => {
-  //   if (name.length > 12) {
-  //     return name.split(' ')[0];
-  //   }
-  //   return name;
-  // };
-
-  // const timeout = loaderDelay;
 
   const Logo = (
     <div className="logo" tabIndex="-1">
@@ -168,9 +159,9 @@ const Navbar = ({
   );
 
   const ResumeLink = (
-    <a className="resume-button" href="/resume" target="_blank" rel="noopener noreferrer">
+    <Link className="resume-button" to="/resume">
       Resume
-    </a>
+    </Link>
   );
 
   return (
@@ -210,6 +201,14 @@ const Navbar = ({
             )}
           </TransitionGroup>
         </NavLinks>
+
+        <TransitionGroup component={null}>
+          {isMounted && (
+          <CSSTransition classNames={fadeClass} timeout={timeout}>
+            <MenuToggle />
+          </CSSTransition>
+          )}
+        </TransitionGroup>
       </NavWrapper>
     </Header>
   );
