@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+// import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 // import Brightness2Icon from '@mui/icons-material/Brightness2';
@@ -11,11 +12,34 @@ import educationData from '../../data/educationData';
 // import { ThemeContext } from '../../contexts/theme';
 import achievementData from '../../data/achievementData';
 
-const NavWrapper = styled.div`
-// display: flex;
+const Header = styled.header`
+${({ theme }) => theme.mixins.flexBetween};
+  position: fixed;
+  top: 0;
+  z-index: 11;
+  padding: 0px 50px;
+  width: 100%;
+  height: var(--nav-height);
+  background-color: rgba(10, 25, 47, 0.85);
+  filter: none !important;
+  pointer-events: auto !important;
+  user-select: auto !important;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+
+  @media (max-width: 1080px) {
+    padding: 0 40px;
+  }
+  @media (max-width: 768px) {
+    padding: 0 25px;
+  }
 `;
 
-const NavItems = styled.nav`
+const NavWrapper = styled.nav`
+
+`;
+
+const NavItems = styled.div`
 
 `;
 
@@ -56,98 +80,100 @@ const Navbar = ({
   };
 
   return (
-    <NavWrapper>
-      <NavItems>
-        <NavMenuItems>
-          <NavMenu>
-            <div className="logo">
-              <NavLink
-                to="/"
-                href=""
-              >
-                <h1>
-                  {shortname(headerData.name)}
-                </h1>
-              </NavLink>
-            </div>
-            <div className="items">
-              <NavItem>
+    <Header>
+      <NavWrapper>
+        <NavItems>
+          <NavMenuItems>
+            <NavMenu>
+              <div className="logo">
                 <NavLink
                   to="/"
-                  onClick={handleAboutScroll}
+                  href=""
                 >
-                  About
+                  <h1>
+                    {shortname(headerData.name)}
+                  </h1>
                 </NavLink>
-              </NavItem>
-
-              { educationData.length ? (
+              </div>
+              <div className="items">
                 <NavItem>
                   <NavLink
                     to="/"
-                    onClick={handleExperienceScroll}
+                    onClick={handleAboutScroll}
                   >
-                    Experience
+                    About
                   </NavLink>
                 </NavItem>
-              ) : null }
 
-              { projectsData.length ? (
+                { educationData.length ? (
+                  <NavItem>
+                    <NavLink
+                      to="/"
+                      onClick={handleExperienceScroll}
+                    >
+                      Experience
+                    </NavLink>
+                  </NavItem>
+                ) : null }
+
+                { projectsData.length ? (
+                  <NavItem>
+                    <NavLink
+                      to="/"
+                      onClick={handleProjectScroll}
+                    >
+                      Work
+                    </NavLink>
+                  </NavItem>
+                ) : null }
+
+                { skillsData.stack1.length ? (
+                  <NavItem>
+                    <NavLink
+                      to="/"
+                      onClick={handleSkillScroll}
+                    >
+                      Skills
+                    </NavLink>
+                  </NavItem>
+                ) : null }
+
+                { educationData.length ? (
+                  <NavItem>
+                    <NavLink
+                      to="/"
+                      onClick={handleEducationScroll}
+                    >
+                      Education
+                    </NavLink>
+                  </NavItem>
+                ) : null }
+
+                { achievementData.achievements.length ? (
+                  <NavItem>
+                    <NavLink
+                      to="/"
+                      onClick={handleAchievementsScroll}
+                    >
+                      Achievements
+                    </NavLink>
+                  </NavItem>
+                ) : null }
+
                 <NavItem>
                   <NavLink
                     to="/"
-                    onClick={handleProjectScroll}
+                    onClick={handleContactScroll}
                   >
-                    Work
+                    Contacts
                   </NavLink>
                 </NavItem>
-              ) : null }
-
-              { skillsData.stack1.length ? (
-                <NavItem>
-                  <NavLink
-                    to="/"
-                    onClick={handleSkillScroll}
-                  >
-                    Skills
-                  </NavLink>
-                </NavItem>
-              ) : null }
-
-              { educationData.length ? (
-                <NavItem>
-                  <NavLink
-                    to="/"
-                    onClick={handleEducationScroll}
-                  >
-                    Education
-                  </NavLink>
-                </NavItem>
-              ) : null }
-
-              { achievementData.achievements.length ? (
-                <NavItem>
-                  <NavLink
-                    to="/"
-                    onClick={handleAchievementsScroll}
-                  >
-                    Achievements
-                  </NavLink>
-                </NavItem>
-              ) : null }
-
-              <NavItem>
-                <NavLink
-                  to="/"
-                  onClick={handleContactScroll}
-                >
-                  Contacts
-                </NavLink>
-              </NavItem>
-            </div>
-          </NavMenu>
-        </NavMenuItems>
-      </NavItems>
-    </NavWrapper>
+              </div>
+            </NavMenu>
+          </NavMenuItems>
+        </NavItems>
+      </NavWrapper>
+    </Header>
   );
 };
 

@@ -24,6 +24,7 @@ h1 {
   font-family: var(--font-mono);
   font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
   font-weight: 400;
+  line-height: 2;
 
   @media (max-width: 480px) {
     margin: 0 0 20px 2px;
@@ -33,7 +34,7 @@ h1 {
 h3 {
   margin-top: 5px;
   color: var(--slate);
-  line-height: 1.2 ;
+  line-height: 1.2;
 }
 
 p {
