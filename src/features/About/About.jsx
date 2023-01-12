@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 // import { makeStyles } from '@mui/core/styles';
 // import { Button } from '@mui/core';
 
 import about from '../../data/aboutData';
+import { srConfig } from '../../utils/config';
+import sr from '../../utils/sr';
 
 // const Button = styled.button`
 //     display: block;
@@ -53,11 +55,15 @@ flex-direction: column;
 `;
 
 const About = () => {
+  const revealContainer = useRef(null);
+  useEffect(() => {
+    sr.reveal(revealContainer.current, srConfig());
+  }, []);
   const {
     description1, description2, description3, image, stack,
   } = about;
   return (
-    <AboutWrapper id="about">
+    <AboutWrapper id="about" ref={revealContainer}>
       <h1>About Me</h1>
       <AboutItems>
         <div>

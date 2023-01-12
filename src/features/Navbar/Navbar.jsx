@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { PropTypes } from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import IconLogo from '../Logo/IconLogo';
 import links from '../../data/navlinksData';
 import MenuToggle from '../Menu/MenuToggle';
+import useScrollDirection from '../../hooks/useScrollDirection';
 
 const Header = styled.header`
 ${({ theme }) => theme.mixins.flexBetween};
@@ -29,6 +30,25 @@ ${({ theme }) => theme.mixins.flexBetween};
   }
   @media (max-width: 768px) {
     padding: 0 25px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    ${(props) => props.scrollDirection === 'up'
+      && !props.scrolledToTop
+      && css`
+        height: var(--nav-scroll-height);
+        transform: translateY(0px);
+        background-color: rgba(10, 25, 47, 0.85);
+        box-shadow: 0 10px 30px -10px var(--navy-shadow);
+      `};
+
+    ${(props) => props.scrollDirection === 'down'
+      && !props.scrolledToTop
+      && css`
+        height: var(--nav-scroll-height);
+        transform: translateY(calc(var(--nav-scroll-height) * -1));
+        box-shadow: 0 10px 30px -10px var(--navy-shadow);
+      `};
   }
 `;
 
@@ -110,9 +130,12 @@ const Navbar = ({
   handleSkillScroll, handleAboutScroll, handleProjectScroll, handleEducationScroll,
   handleAchievementsScroll, handleExperienceScroll, handleContactScroll,
 }) => {
-  const isHome = true;
-  const [isMounted, setIsMounted] = useState(false);
+  // const isHome = true;
+  const isHome = window.location.pathname === '/';
+  // console.log(isHome);
+  const [isMounted, setIsMounted] = useState(!isHome);
   const [scrolledToTop, setScrolledToTop] = useState(true);
+  const scrollDirection = useScrollDirection('down');
   const timeout = 2000;
   const fadeDownClass = isHome ? 'fadedown' : '';
   const fadeClass = isHome ? 'fade' : '';
@@ -131,6 +154,8 @@ const Navbar = ({
     handleEducationScroll,
   ];
 
+  // console.log(items[0]);
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsMounted(true);
@@ -147,13 +172,18 @@ const Navbar = ({
   const Logo = (
     <div className="logo" tabIndex="-1">
       {isHome ? (
-        <a href="/" aria-label="home">
-          <IconLogo />
-        </a>
-      ) : (
         <Link to="/" aria-label="home">
           <IconLogo />
         </Link>
+      ) : (
+        <>
+          <Link to="/" aria-label="home">
+            <IconLogo />
+          </Link>
+          {/* <a href="/" aria-label="home">
+            <IconLogo />
+          </a> */}
+        </>
       )}
     </div>
   );
@@ -165,7 +195,7 @@ const Navbar = ({
   );
 
   return (
-    <Header scrolledToTop={scrolledToTop}>
+    <Header scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
       <NavWrapper>
 
         <TransitionGroup component={null}>
