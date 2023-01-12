@@ -13,12 +13,19 @@ import Education from '../../features/Education/Education';
 import Achievements from '../../features/Achievements/Achievements';
 import Footer from '../../features/Footer/Footer';
 // import Testimonials from '../../features/Testimonials/Testimonials';
+import SocialSideBar from '../../features/Socials/Socials';
 
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 `;
+
+// const MainContainer = styled.main`
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+// `;
 
 const Main = () => {
   const skillsRef = useRef();
@@ -99,7 +106,8 @@ const Main = () => {
         handleExperienceScroll={handleExperienceScroll}
         handleContactScroll={handleContactScroll}
       />
-      <div id="content-blur">
+      <SocialSideBar />
+      <main id="content-blur" className="fillHeight">
         <Hero />
         <div ref={aboutRef}>
           <About />
@@ -126,7 +134,7 @@ const Main = () => {
           <Contact />
         </div>
         <Footer />
-      </div>
+      </main>
     </MainContainer>
   );
 };

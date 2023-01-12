@@ -1,0 +1,14 @@
+export { default as IconAppStore } from './iconsFiles/appstore';
+export { default as IconBookmark } from './iconsFiles/bookmark';
+export { default as IconCodepen } from './iconsFiles/codepen';
+export { default as IconExternal } from './iconsFiles/external';
+export { default as IconFolder } from './iconsFiles/folder';
+export { default as IconFork } from './iconsFiles/fork';
+export { default as Icon } from './icon';
+export { default as IconGitHub } from './iconsFiles/github';
+export { default as IconInstagram } from './iconsFiles/instagram';
+export { default as IconLinkedin } from './iconsFiles/linkedin';
+export { default as IconLoader } from './iconsFiles/loader';
+export { default as IconPlayStore } from './iconsFiles/playstore';
+export { default as IconStar } from './iconsFiles/star';
+export { default as IconTwitter } from './iconsFiles/twitter';
