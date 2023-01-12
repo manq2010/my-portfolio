@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from './styles';
 import Main from './pages/Main/Main';
 import ProjectPage from './pages/Project/ProjectPage';
-import ScrollToTop from './features/ScrollToTop/ScrollToTop';
+// import ScrollToTop from './features/ScrollToTop/ScrollToTop';
 import ResumePage from './pages/Resume/ResumePage';
 
 const App = () => (
@@ -18,7 +18,7 @@ const App = () => (
           <Route path="/projects" exact element={<ProjectPage />} />
           <Route path="/resume" exact element={<ResumePage />} />
         </Routes>
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
       </Router>
     </ThemeProvider>
   </div>

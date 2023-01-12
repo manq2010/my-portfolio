@@ -16,6 +16,11 @@ a {
   position: relative;
   z-index: 1;
 }
+
+.btn {
+  ${({ theme }) => theme.mixins.bigButton2};
+  margin-top: 30px;
+}
 `;
 
 const ProjectItem = styled.li`
@@ -299,12 +304,12 @@ align-items: center;
     filter: grayscale(100%) contrast(1) brightness(90%);
     // display: none;
 
-    // @media (max-width: 768px) {
-    //   object-fit: cover;
-    //   width: auto;
-    //   height: 100%;
-    //   // filter: grayscale(10%) contrast(1) brightness(90%);
-    // }
+    @media (max-width: 768px) {
+      object-fit: cover;
+      width: auto;
+      height: 100%;
+      filter: grayscale(10%) contrast(1) brightness(90%);
+    }
   }
 }
 `;
@@ -325,7 +330,6 @@ const Projects = () => {
       behavior: 'smooth',
     });
   };
-  // const {name, description, stack, sourceCode, livePreview, image} = projects;
   return (
     <ProjectWrapper id="projects" ref={revealTitle}>
       <h2 className="numbered-heading">Some Things I&apos;ve Built</h2>
@@ -334,7 +338,7 @@ const Projects = () => {
 
         {
         projects
-          && projects.map((project) => (
+          && projects.slice(0, 2).map((project) => (
             <ProjectItem
               key={project.id}
               // eslint-disable-next-line no-return-assign
@@ -395,7 +399,17 @@ const Projects = () => {
               </div>
             </ProjectItem>
           ))
+
 }
+
+        <Link
+          className="btn"
+          to="/projects/"
+        >
+          <button type="button">
+            See More
+          </button>
+        </Link>
       </ProjectsGrid>
     </ProjectWrapper>
   );
