@@ -6,8 +6,53 @@ import { v4 as uuidv4 } from 'uuid';
 import projects from '../../data/projectsData';
 import sr from '../../utils/sr';
 import { srConfig } from '../../utils/config';
+import { pluralize } from '../../utils/string';
 
 const ProjectListWrapper = styled.section`
+.heading-bg {
+  width: 100%;
+  position: relative;
+  // top: -2px;
+  z-index: 1;
+  // background-color: var(--green-tint);
+
+  &-wrapper {
+    width: 100%;
+    padding: 2rem 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    // background-color: transparent;
+
+    h2 {
+      margin-right: 50px;
+      flex: 1;
+      // color: white;
+    }
+
+    .count {
+      font-size: 22px;
+      letter-spacing: 1px;
+      font-weight: bold;
+      width: 160px;
+      // color: white;
+      // font-family: var(--sec-font);
+    }
+
+    @media (max-width: 450px) {
+      flex-wrap: wrap;
+
+      h2 {
+        margin-right: 0;
+        width: 100%;
+        flex: none;
+      }
+    }
+  }
+}
+
+
+
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -165,15 +210,27 @@ position: relative;
   }
 `;
 
+const InputStyle = styled.div`
+input {
+  padding: 20px;
+  font-size: 20px;
+  width: 100%;
+  border: 1px solid var(--dark-slate);
+  border-radius: 5px;
+  font-family: var(--font-sans);
+}
+
+`;
+
 const ProjectList = () => {
   const [search, setSearch] = useState('');
   const revealTitle = useRef(null);
-  const revealArchiveLink = useRef(null);
+  const revealSearchInput = useRef(null);
   const revealProjects = useRef([]);
 
   useEffect(() => {
-    sr.reveal(revealTitle.current, srConfig());
-    sr.reveal(revealArchiveLink.current, srConfig());
+    sr.reveal(revealTitle.current, srConfig(100));
+    sr.reveal(revealSearchInput.current, srConfig(300));
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
@@ -229,34 +286,58 @@ const ProjectList = () => {
     </div>
   );
 
+  const isTrueRef = useRef(false);
+  if (projects.length === searchedProjects.length) {
+    isTrueRef.current = true;
+  } else {
+    isTrueRef.current = false;
+  }
+
   return (
     <ProjectListWrapper>
-      <div
+      <div className="heading-bg" ref={revealTitle}>
+        <div className="container">
+          <div className="heading-bg-wrapper">
+            <h2>All my projects in one place ✨</h2>
+            <span className="count">
+              Total:
+              {' '}
+              {projects.length}
+              +
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <InputStyle
+        ref={revealSearchInput}
         style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <TransitionGroup component={null}>
-          <CSSTransition>
-            <input
-              style={{
-                border: '1px solid #fff',
-                borderRadius: '5px',
-                padding: '10px',
-                textAlign: 'start',
-                fontSize: '1rem',
-              }}
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              onBlur={() => setSearch('')}
-              placeholder="Search..."
-            />
-          </CSSTransition>
-        </TransitionGroup>
-      </div>
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onBlur={() => setSearch('')}
+          placeholder="Search..."
+        />
+      </InputStyle>
+
+      {
+        isTrueRef.current ? (
+          ''
+        ) : (
+          <span>
+            {searchedProjects.length}
+            {' '}
+            {pluralize('result', searchedProjects.length)}
+          </span>
+        )
+
+      }
 
       <ul className="projects-grid">
         <TransitionGroup component={null}>
