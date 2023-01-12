@@ -8,15 +8,15 @@ const aboutData = {
     skill: 'Javascript (ES6+)',
   },
   {
-    id: 1,
+    id: 2,
     skill: 'React',
   },
   {
-    id: 1,
+    id: 3,
     skill: 'Ruby on Rails',
   },
   {
-    id: 1,
+    id: 4,
     skill: 'Ruby',
   },
   ],
