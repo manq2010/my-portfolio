@@ -1,57 +1,101 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-// import { makeStyles } from '@mui/core/styles';
-// import { Button } from '@mui/core';
-
 import about from '../../data/aboutData';
 import { srConfig } from '../../utils/config';
 import sr from '../../utils/sr';
 
-// const Button = styled.button`
-//     display: block;
-//     cursor: pointer;
-//     padding: 0.8em 1.4em;
-//     font-weight: 500;
-//     font-size: 0.9rem;
-//     text-transform: lowercase;
-//     transition: transform 0.2s ease-in-out;
-
-//     color: #2978b5;
-//     border: 2px solid #2978b5;
-//     position: relative;
-//     overflow: hidden;
-//     z-index: 1;
-
-//     &::before {
-//         content: '';
-//         position: absolute;
-//         background-color: #2978b5;
-//         right: 100%;
-//         bottom: 0;
-//         left: 0;
-//         top: 0;
-//         z-index: -1;
-//         transition: right 0.2s ease-in-out;
-//       }
-
-//       &:hover::before,
-//       &:focus::before, {
-//           color: #23283e;
-//       }
-
-// `;
-
 const AboutWrapper = styled.section`
-display: flex;
-flex-direction: column;
-gap: 1rem;
+max-width: 900px;
+  .inner {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-gap: 50px;
 
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
 `;
 
 const AboutItems = styled.div`
-display: flex;
-flex-direction: column;
+ul.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 200px));
+  grid-gap: 0 10px;
+  padding: 0;
+  margin: 20px 0 0 0;
+  overflow: hidden;
+  list-style: none;
 
+  li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
+
+    &:before {
+      content: '⦿';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: var(--fz-sm);
+      line-height: 12px;
+    }
+  }
+}
+`;
+
+const AboutPicture = styled.div`
+position: relative;
+  max-width: 300px;
+
+  @media (max-width: 768px) {
+    margin: 50px auto 0;
+    width: 70%;
+  }
+
+  .wrapper {
+    ${({ theme }) => theme.mixins.boxShadow};
+    display: block;
+    position: relative;
+    width: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--green);
+
+    &:hover,
+    &:focus {
+      .img {
+        filter: none;
+        mix-blend-mode: normal;
+      }
+
+      .image-caption {
+      top: 98%;
+      transition: var(--transition);
+      color: var(--lightest-navy);
+      background-color: var(--green);
+      }
+    }
+    .img {
+      position: relative;
+      border-radius: var(--border-radius);
+      mix-blend-mode: multiply;
+      filter: grayscale(100%) contrast(1);
+      transition: var(--transition);
+    }
+
+    .image-caption {
+      position: absolute;
+      top: 80%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 1;
+      transition: var(--transition);
+      border-radius: var(--border-radius);
+    }
+  }
 `;
 
 const About = () => {
@@ -64,32 +108,34 @@ const About = () => {
   } = about;
   return (
     <AboutWrapper id="about" ref={revealContainer}>
-      <h1>About Me</h1>
-      <AboutItems>
-        <div>
+      <h2 className="numbered-heading">About Me</h2>
+
+      <div className="inner">
+        <AboutItems>
           <div>
             <p>{description1}</p>
-            <br />
+
             <p>{description2}</p>
-            <br />
+
             <p>{description3}</p>
           </div>
-
-          <div>
-            {stack}
+          <ul className="skills-list">
+            {
+            stack && stack.map(({ id, skill }) => <li key={id}>{skill}</li>)
+            }
+          </ul>
+        </AboutItems>
+        <AboutPicture>
+          <div className="wrapper">
+            <img
+              className="img"
+              src={image}
+              alt="img-about"
+            />
+            <div className="image-caption">Mancoba Sihlongonyane</div>
           </div>
-        </div>
-
-        <div>
-          <img
-            src={image}
-            alt=""
-            className="landing--img"
-            style={{ width: '300px' }}
-          />
-
-        </div>
-      </AboutItems>
+        </AboutPicture>
+      </div>
     </AboutWrapper>
   );
 };
