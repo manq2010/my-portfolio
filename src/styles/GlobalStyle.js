@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
         background-color: transparent;
       }
 
-      #content > * {
+      #content-blur > * {
         filter: blur(5px) brightness(0.7);
         transition: var(--transition);
         pointer-events: none;

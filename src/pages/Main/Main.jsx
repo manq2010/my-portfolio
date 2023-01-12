@@ -99,32 +99,34 @@ const Main = () => {
         handleExperienceScroll={handleExperienceScroll}
         handleContactScroll={handleContactScroll}
       />
-      <Hero />
-      <div ref={aboutRef}>
-        <About />
-      </div>
-      <div ref={experienceRef}>
-        <Experience />
-      </div>
-      <div ref={projectRef}>
-        <Projects />
-      </div>
-      <div ref={skillsRef}>
-        <Skills />
-      </div>
+      <div id="content-blur">
+        <Hero />
+        <div ref={aboutRef}>
+          <About />
+        </div>
+        <div ref={experienceRef}>
+          <Experience />
+        </div>
+        <div ref={projectRef}>
+          <Projects />
+        </div>
+        <div ref={skillsRef}>
+          <Skills />
+        </div>
 
-      {/* <Testimonials /> */}
+        {/* <Testimonials /> */}
 
-      <div ref={educationRef}>
-        <Education />
+        <div ref={educationRef}>
+          <Education />
+        </div>
+        <div ref={achievementsRef}>
+          <Achievements />
+        </div>
+        <div ref={contactRef}>
+          <Contact />
+        </div>
+        <Footer />
       </div>
-      <div ref={achievementsRef}>
-        <Achievements />
-      </div>
-      <div ref={contactRef}>
-        <Contact />
-      </div>
-      <Footer />
     </MainContainer>
   );
 };
