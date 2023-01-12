@@ -43,6 +43,10 @@ ul.skills-list {
       line-height: 12px;
     }
   }
+
+  div > p {
+    text-align: justify;
+  }
 }
 `;
 
@@ -98,6 +102,10 @@ position: relative;
   }
 `;
 
+const P = styled.p`
+text-align: justify;
+`;
+
 const About = () => {
   const revealContainer = useRef(null);
   useEffect(() => {
@@ -113,13 +121,13 @@ const About = () => {
       <div className="inner">
         <AboutItems>
           <div>
-            <p>{description1}</p>
+            <P>{description1}</P>
 
-            <p>{description2}</p>
+            <P>{description2}</P>
 
-            <p>{description3}</p>
+            <P>{description3}</P>
 
-            <p>Here are a few technologies I&apos;ve been working with recently:</p>
+            <P>Here are a few technologies I&apos;ve been working with recently:</P>
           </div>
           <ul className="skills-list">
             {

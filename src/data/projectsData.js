@@ -9,7 +9,7 @@ const projects = [
     stack: ['SASS', 'TypeScript', 'React'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
-    image: 'Project 1',
+    image: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80',
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const projects = [
     stack: ['SASS', 'TypeScript', 'React'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
-    image: 'Project 2',
+    image: 'https://images.unsplash.com/photo-1620325867502-221cfb5faa5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=857&q=80',
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const projects = [
     stack: ['SASS', 'TypeScript', 'React'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
-    image: 'Project 3',
+    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const projects = [
     stack: ['SASS', 'TypeScript', 'React'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
-    image: 'Project 4',
+    image: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=739&q=80',
   },
   {
     id: 5,
@@ -49,7 +49,7 @@ const projects = [
     stack: ['SASS', 'TypeScript', 'React'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
-    image: 'Project 5',
+    image: 'https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
   },
 ];
 
