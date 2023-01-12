@@ -361,7 +361,6 @@ const Projects = () => {
                   {project.stack && (
                   <ul className="project-tech-list">
                     {project.stack.map((tech) => (
-                      // eslint-disable-next-line react/no-array-index-key
                       <li key={uuidv4()}>{tech}</li>
                     ))}
                   </ul>
