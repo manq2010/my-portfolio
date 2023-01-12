@@ -8,6 +8,7 @@ margin-top: 2rem;
 
 const Education = () => (
   <EducationWrapper id="education">
+    <h2 className="numbered-heading">Where I acquired knowledge</h2>
     {
         educationData && (
         <div>

@@ -88,29 +88,32 @@ const Testimonials = () => {
   };
 
   return (
-    <SliderContainer>
-      <h2> Single Item</h2>
-      <Slider {...{ settings }}>
-        <Slide>
-          <h3>1</h3>
-        </Slide>
-        <Slide>
-          <h3>2</h3>
-        </Slide>
-        <Slide>
-          <h3>3</h3>
-        </Slide>
-        <Slide>
-          <h3>4</h3>
-        </Slide>
-        <Slide>
-          <h3>5</h3>
-        </Slide>
-        <Slide>
-          <h3>6</h3>
-        </Slide>
-      </Slider>
-    </SliderContainer>
+    <section>
+      <h2 className="numbered-heading">Where Other Say About my Work</h2>
+      <SliderContainer>
+        <h2> Single Item</h2>
+        <Slider {...{ settings }}>
+          <Slide>
+            <h3>1</h3>
+          </Slide>
+          <Slide>
+            <h3>2</h3>
+          </Slide>
+          <Slide>
+            <h3>3</h3>
+          </Slide>
+          <Slide>
+            <h3>4</h3>
+          </Slide>
+          <Slide>
+            <h3>5</h3>
+          </Slide>
+          <Slide>
+            <h3>6</h3>
+          </Slide>
+        </Slider>
+      </SliderContainer>
+    </section>
   );
 };
 

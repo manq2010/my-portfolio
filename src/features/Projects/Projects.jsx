@@ -1,33 +1,35 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Link } from 'react-router-dom';
 import projects from '../../data/projectsData';
 import ProjectItem from './ProjectItem';
+import sr from '../../utils/sr';
+import { srConfig } from '../../utils/config';
 
 const ProjectWrapper = styled.section`
-display: flex;
-flex-direction: column;
-
 `;
 
-const ProjectSectionWrapper = styled.div`
-display: flex;
-margin-top: 2rem;
+const ProjectsGrid = styled.ul`
+${({ theme }) => theme.mixins.resetList};
 
-`;
-
-const SectionTitle = styled.h1`
-  
-`;
-
-const ProjectGrid = styled.div`
-
+a {
+  position: relative;
+  z-index: 1;
+}
 `;
 
 const Projects = () => {
-  // const projectRef = useRef();
+
+
+  const revealTitle = useRef(null);
+  const revealProjects = useRef([]);
+
+  useEffect(() => {
+    sr.reveal(revealTitle.current, srConfig());
+    revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+  }, []);
 
   const handleScroll = () => {
     window.scrollTo({
@@ -39,18 +41,15 @@ const Projects = () => {
 
   return (
     <ProjectWrapper id="projects">
-      <SectionTitle>Some Things I&apos;ve Built</SectionTitle>
-      <div>
-        { projects.length && (
-        <ProjectSectionWrapper id="projects">
-          <ProjectGrid>
-            {projects.slice(0, 2).map((project) => (
-              <ProjectItem key={uuidv4()} project={project} />
-            ))}
-          </ProjectGrid>
-        </ProjectSectionWrapper>
-        )}
-      </div>
+      <h2 className="numbered-heading">Some Things I&apos;ve Built</h2>
+
+      <ProjectsGrid>
+        { projects.length && 
+          projects.slice(0, 2).map({name, description, stack, sourceCode, livePreview, image}) => (
+            
+          )
+    
+    }
       <div>
         {
         projects.length > 2 && (

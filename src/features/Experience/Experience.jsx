@@ -6,12 +6,8 @@ import keyCodes from '../../utils/keyCode';
 import sr from '../../utils/sr';
 import { srConfig } from '../../utils/config';
 import experienceData from '../../data/experienceData';
-// import ExperienceItem from './ExperienceItem';
 
 const ExperienceSection = styled.section`
-margin-top: 2rem;
-// display: flex;
-
 max-width: 700px;
 
 .inner {
@@ -129,11 +125,7 @@ const StyledHighlight = styled.div`
   }
 `;
 
-const SectionTitle = styled.h1`
-
-`;
-
-const StyledTabPanels = styled.div`
+const TabPanels = styled.div`
 position: relative;
 width: 100%;
 margin-left: 20px;
@@ -143,32 +135,32 @@ margin-left: 20px;
 }
 `;
 
-const StyledTabPanel = styled.div`
-  width: 100%;
-  height: auto;
-  padding: 10px 5px;
+const TabPanel = styled.div`
+width: 100%;
+height: auto;
+padding: 10px 5px;
 
-  ul {
+ul {
+  ${({ theme }) => theme.mixins.fancyList};
+}
 
+h3 {
+  margin-bottom: 2px;
+  font-size: var(--fz-xxl);
+  font-weight: 500;
+  line-height: 1.3;
+
+  .company {
+    color: var(--green);
   }
+}
 
-  h3 {
-    margin-bottom: 2px;
-    font-size: var(--fz-xxl);
-    font-weight: 500;
-    line-height: 1.3;
-
-    .company {
-      color: #64ffda;
-    }
-  }
-
-  .range {
-    margin-bottom: 25px;
-    color: #a8b2d1;
-    font-family: var(--font-mono);
-    font-size: var(--fz-xs);
-  }
+.range {
+  margin-bottom: 25px;
+  color: var(--light-slate);
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+}
 `;
 
 const Experience = () => {
@@ -222,8 +214,8 @@ const Experience = () => {
 
   return (
     <ExperienceSection id="jobs" ref={revealContainer}>
-      <SectionTitle>Where I&apos;ve Worked</SectionTitle>
-      <div id="experience" className="inner">
+      <h2 className="numbered-heading">Where I&apos;ve Worked</h2>
+      <div className="inner">
         <ExperinceList
           role="tablist"
           aria-label="Job tabs"
@@ -249,11 +241,12 @@ const Experience = () => {
     ))}
           <StyledHighlight activeTabId={activeTabId} />
         </ExperinceList>
-        <StyledTabPanels>
+
+        <TabPanels>
           {experienceData
           && experienceData.map((experience) => (
             <CSSTransition key={experience.id} in={activeTabId === experience.id} timeout={250} classNames="fade">
-              <StyledTabPanel
+              <TabPanel
                 id={`panel-${experience.id}`}
                 role="tabpanel"
                 tabIndex={activeTabId === experience.id ? '0' : '-1'}
@@ -275,10 +268,10 @@ const Experience = () => {
                 <div>
                   {experience.points}
                 </div>
-              </StyledTabPanel>
+              </TabPanel>
             </CSSTransition>
           ))}
-        </StyledTabPanels>
+        </TabPanels>
       </div>
     </ExperienceSection>
   );

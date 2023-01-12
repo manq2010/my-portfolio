@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import achievementData from '../../data/achievementData';
+import { srConfig } from '../../utils/config';
+import sr from '../../utils/sr';
 
 const AchievementsWrapper = styled.section`
 margin-top: 2rem;
 
 `;
 
-const Achievements = () => (
-  <AchievementsWrapper id="achievements">
-    {
+const Achievements = () => {
+  const revealContainer = useRef(null);
+
+  useEffect(() => {
+    sr.reveal(revealContainer.current, srConfig());
+  }, []);
+
+  return (
+    <AchievementsWrapper id="achievements" ref={revealContainer}>
+      <h2 className="numbered-heading">My Achievements</h2>
+      {
         achievementData && (
         <div>
-          <h1>Achievements</h1>
           <div className="-data">
             {achievementData.achievements.map((achievement) => (
               <div key={achievement.id}>
@@ -33,7 +42,8 @@ const Achievements = () => (
         )
     }
 
-  </AchievementsWrapper>
-);
+    </AchievementsWrapper>
+  );
+};
 
 export default Achievements;

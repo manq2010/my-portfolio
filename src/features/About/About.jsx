@@ -118,6 +118,8 @@ const About = () => {
             <p>{description2}</p>
 
             <p>{description3}</p>
+
+            <p>Here are a few technologies I&apos;ve been working with recently:</p>
           </div>
           <ul className="skills-list">
             {

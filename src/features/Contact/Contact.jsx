@@ -64,6 +64,7 @@ const Contact = () => {
         rel="noreferrer"
       >
         <TwitterIcon aria-label="Twitter" />
+        Twitter
       </a>
       )}
 
