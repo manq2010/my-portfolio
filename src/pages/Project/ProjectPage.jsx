@@ -38,26 +38,28 @@ const ProjectPage = () => {
         </title>
       </Helmet>
       <Navbar />
-      <ProjectItems>
-        <div>
-          <Link to="/">
-            <HomeIcon />
-          </Link>
-          <h1>Projects</h1>
-        </div>
-        <div>
-          <div className="projectPage-search">
-            <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search project..." />
+      <div id="content-blur">
+        <ProjectItems>
+          <div>
+            <Link to="/">
+              <HomeIcon />
+            </Link>
+            <h1>Projects</h1>
           </div>
           <div>
-            <Grid className="project-grid" container direction="row" alignItems="center" justifyContent="center">
-              {filteredArticles.map((project) => (
-                <ProjectItem key={uuidv4()} project={project} />
-              ))}
-            </Grid>
+            <div className="projectPage-search">
+              <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search project..." />
+            </div>
+            <div>
+              <Grid className="project-grid" container direction="row" alignItems="center" justifyContent="center">
+                {filteredArticles.map((project) => (
+                  <ProjectItem key={uuidv4()} project={project} />
+                ))}
+              </Grid>
+            </div>
           </div>
-        </div>
-      </ProjectItems>
+        </ProjectItems>
+      </div>
     </ProjectContainer>
   );
 };

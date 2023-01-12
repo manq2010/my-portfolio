@@ -140,7 +140,7 @@ const MenuSidebar = styled.aside`
     a {
       ${({ theme }) => theme.mixins.link};
       width: 100%;
-      padding: 3px 20px 20px;
+      // padding: 3px 20px 20px;
     }
   }
 
@@ -290,7 +290,7 @@ const MenuToggle = () => {
           <nav ref={navRef}>
             {links && (
               <ol>
-                {links.map(({ url, name, id }) => (
+                {links.slice(0, 8).map(({ url, name, id }) => (
                   <li key={id}>
                     <Link to={url} onClick={() => setMenuOpen(false)}>
                       {name}

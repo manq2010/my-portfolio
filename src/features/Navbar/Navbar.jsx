@@ -182,7 +182,7 @@ const Navbar = ({
             <TransitionGroup component={null}>
               {isMounted
                     && links
-                    && links.map(({ url, name, id }) => (
+                    && links.slice(0, 4).map(({ url, name, id }) => (
                       <CSSTransition key={id} classNames={fadeDownClass} timeout={timeout}>
                         <li key={IDBCursorWithValue} style={{ transitionDelay: `${isHome ? id * 100 : 0}ms` }}>
                           <Link to={url} onClick={items[id - 1]}>{name}</Link>
